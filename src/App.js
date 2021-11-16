@@ -1,24 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import { loadFile } from './ReadJson/FileReadJSON';
+import Workspace from 'polotno/canvas/workspace';
+import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from 'polotno';
+import Toolbar from 'polotno/toolbar/toolbar';
+import SidePanel from 'polotno/side-panel/side-panel';
+import { DEFAULT_SECTIONS } from 'polotno/side-panel/side-panel';
+import { ZoomButtons } from 'polotno/toolbar/zoom-buttons';
+import Save from './ToolBar_save/Save';
+import DemoPhoto from './DemoPolotno';
+function App({ store }) {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <DemoPhoto store={store}/>
+     
     </div>
+    
+
   );
 }
 

@@ -2,11 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/core/lib/css/blueprint.css';
+// import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'polotno/model/store';
+const  store  = createStore({
+  container: document.getElementById('root'),
+  key: '', // you can create it here: https://polotno.dev/cabinet/
+  // you can hide back-link on a paid licence
+  // but it will be good if you can keep it for Polotno project support
+  showCredit: true,
+});
+store.addPage();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App store={store}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
