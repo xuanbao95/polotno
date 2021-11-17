@@ -1,0 +1,19 @@
+.go1798861395 {
+    background-color: #293039;
+    color:white;
+    height: 100%;
+}
+.polotno-panel-container{
+    background-color: #333f48;
+    color:white;
+
+};
+.bp3-button .bp3-minimal{
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-left: 5px;
+    font-family: Roboto;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 5px;
+}
