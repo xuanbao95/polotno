@@ -19,9 +19,7 @@ import {
 import { CustomTemplateSection } from "./DemoTemplate/DemoTemplate";
 import Navbar from "./component/Navbar";
 import ZoomButton from "./component/ZoomButton";
-
-
-
+import TextToolbars from "./component/AddLink";
 function DemoPhoto({ store }) {
   //tạo handle cho user khi click và drop vào element sẽ chạy file hay img
   const handleDrop = (ev) => {
@@ -58,10 +56,9 @@ function DemoPhoto({ store }) {
     BackgroundSection,
     SizeSection,
   ];
+  
   return (
       <div>
-
-      
       <Navbar store={store}/>
     <PolotnoContainer
       style={{ width: "100vw", height: "100vh" }}
@@ -73,7 +70,8 @@ function DemoPhoto({ store }) {
       </SidePanelWrap>
       <WorkspaceWrap>
         <Save store={store} />
-        <Toolbar store={store} downloadButtonEnabled />
+        
+        <Toolbar store={store} hideRemove/>
           <Workspace store={store} />
           <ZoomButton store={store}/>
         {/* <ZoomButtons store={store} /> */}

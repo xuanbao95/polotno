@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
-// import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
+import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'polotno/model/store';
 import './polotno.css'
@@ -18,15 +18,15 @@ const  store  = createStore({
 
 const page = store.addPage();
 
-page.addElement({
-  with:430,
-  height:1000,
-  type: 'text',
-  fill: 'black',
+store.activePage.addElement({
+  type:'text',
   text: 'hello',
-});
+  fontSize:60,
+  width:400,
+  height:100,
+})
+console.log(store.activePage);
 store.setSize(414,736,true);
-console.log(1.2 * store.scale);
 ReactDOM.render(
   <React.StrictMode>
     <App store={store}/>

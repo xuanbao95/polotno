@@ -11,7 +11,7 @@ import {
     NavbarGroup,
 } from '@blueprintjs/core';
 import { downloadFile } from 'polotno/utils/download';
-
+import { unstable_registerToolbarComponent } from 'polotno/config';
 import styled from 'polotno/utils/styled';
 const NavbarContainer = styled('div')`
   @media screen and (max-width: 500px) {
@@ -31,7 +31,7 @@ const Save = observer(({ store }) => {
     return (
         <NavbarContainer>
             <NavInner>
-                <Navbar.Group>
+                <Navbar.Group align={Alignment.CENTER}>
                     <Button
                     backgroundColor="3c8b14"
                         icon="new-object"
@@ -48,7 +48,7 @@ const Save = observer(({ store }) => {
                             //mở page mới
                             store.addPage();
                         }}
-                    >New Page</Button>
+                    >New </Button>
                     <label>
                         <Button
                             icon="folder-open"
@@ -120,3 +120,4 @@ const Save = observer(({ store }) => {
     )
 });
 export default Save;
+// unstable_registerToolbarComponent("button",Save)

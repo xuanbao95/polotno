@@ -15,20 +15,17 @@ const useStyles=makeStyles({
 const ZoomButton=observer(({store})=> {
     const classes=useStyles();
     
-    const handleChange=(e)=>{
-        let min =e.target.value;
-        let max=100;
-        if(min==0){
-            store.setScale(0);
-        }else if(min++){
-            store.setScale(store.scale++)
-        }else{
-            store.setScale(max)
-        }
-    }
     return (
         <Box width={150} className={classes.root}>
-        <Slider size="small" defaultValue={0} onChange={handleChange} aria-label="Default" valueLabelDisplay="on" />
+        <Slider size="small" defaultValue={0} onChange={(e)=>{
+            let ev=e.target.value;
+            if(ev==0){
+                store.setSize(430,739,true)
+            }else{
+                store.setScale((ev*0.01)/0.5)
+            }
+            
+        }} aria-label="Default" valueLabelDisplay="auto" />
       </Box>
     )
 })
