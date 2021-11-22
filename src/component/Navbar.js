@@ -81,7 +81,7 @@ export default function Navbar({ store }) {
           paddingLeft: "4px",
           paddingTop: "5px",
           cursor: "pointer",
-          fontSize:"10px"
+          fontSize:"10ps"
         }}
       ></i>
       <i

@@ -46,22 +46,18 @@ function DemoPhoto({ store }) {
     }
   };
   const section = [
-    UploadSection,
-    TextSection,
-    TemplatesSection,
     CustomTemplateSection,
-    PhotosSection,
-    CustomPhotoSection,
     ElementsSection,
     BackgroundSection,
-    SizeSection,
+    UploadSection,
+    TextSection,
   ];
   
   return (
-      <div>
+      <div style={{ maxWidth: "100vw", height: "100vh" }}>
       <Navbar store={store}/>
     <PolotnoContainer
-      style={{ width: "100vw", height: "100vh" }}
+      style={{ maxWidth: "100vw", height: "100vh" }}
       onDrop={handleDrop}
     >
         
@@ -71,7 +67,7 @@ function DemoPhoto({ store }) {
       <WorkspaceWrap>
         <Save store={store} />
         
-        <Toolbar store={store} hideRemove/>
+        <Toolbar store={store} />
           <Workspace store={store} />
           <ZoomButton store={store}/>
         {/* <ZoomButtons store={store} /> */}
