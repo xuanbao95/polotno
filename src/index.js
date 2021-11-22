@@ -18,13 +18,13 @@ const  store  = createStore({
 
 const page = store.addPage();
 
-store.activePage.addElement({
+const element=store.activePage.addElement({
   type:'text',
   text: 'hello',
   fontSize:60,
   width:400,
   height:100,
-})
+});
 console.log(store.activePage);
 store.setSize(414,736,true);
 ReactDOM.render(

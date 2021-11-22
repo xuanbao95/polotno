@@ -15,6 +15,41 @@ import { Classes, Popover2 } from "@blueprintjs/popover2";
 import CustomizedDialogs from './Dialog';
 const TextToolbars = observer(({ store }) => {
   const element = store.selectedElements[0];
+  // const [valid, setValid] = React.useState(false)
+  // const addLink = () => {
+  //   return (
+
+  //     !valid ? <Box width="300px" marginLeft="20px" store={store}>
+  //       <label>Nhập một liên kết: </label>
+  //       <input type="url"
+          
+  //         value={localStorage.getItem(element)} 
+  //         style={{ height: "30px", width: "222px", marginRight: "10px" }} 
+  //         id="link" />
+  //       <div style={{ marginTop: "10px", marginLeft: "160px" }}>
+  //         <button className={Classes.POPOVER2_DISMISS} onClick={() => {
+  //           const ev = document.getElementById("link").value;
+  //           element.set({ custom: { link: ev } })
+  //           localStorage.setItem(element, JSON.stringify(ev))
+  //           setValid(true)
+  //         }}>add link</button>
+  //       </div>
+
+  //     </Box> : <Box width="300px" marginLeft="20px" store={store}>
+  //       <input type="text" value={localStorage.getItem(element)} style={{ height: "30px", width: "222px", marginRight: "10px" }} id="link" />
+  //       <div style={{ marginTop: "10px", marginLeft: "39px" }}>
+  //         <button><a href={localStorage.getItem(element)} target="_blank">Truy Cập liên kết</a></button>
+  //         <button style={{ marginLeft: "8px" }} onClick={() => {
+  //           localStorage.removeItem(element);
+  //           document.getElementById("link").value = ''
+  //           setValid(false)
+  //         }}>xóa link</button>
+  //       </div>
+
+  //     </Box>
+
+  //   )
+  // }
   return (
     <Navbar.Group align={Alignment.LEFT}>
       <FontColorInput store={store} elements={store.selectedElements} />
@@ -22,7 +57,7 @@ const TextToolbars = observer(({ store }) => {
       <FontSizeInput store={store} elements={store.selectedElements} />
       <FontStyleGroup store={store} elements={store.selectedElements} />
       <SpacingInput store={store} elements={store.selectedElements} />
-      <CustomizedDialogs store={store} elements={store.selectedElements}/>
+      <CustomizedDialogs store={store}/>
     </Navbar.Group>
   );
 });
