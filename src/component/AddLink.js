@@ -13,6 +13,7 @@ import {
 import { Button } from "@blueprintjs/core";
 import { Classes, Popover2 } from "@blueprintjs/popover2";
 import CustomizedDialogs from './Dialog';
+import Design from './Design';
 const TextToolbars = observer(({ store }) => {
   const element = store.selectedElements[0];
   // const [valid, setValid] = React.useState(false)
@@ -57,7 +58,8 @@ const TextToolbars = observer(({ store }) => {
       <FontSizeInput store={store} elements={store.selectedElements} />
       <FontStyleGroup store={store} elements={store.selectedElements} />
       <SpacingInput store={store} elements={store.selectedElements} />
-      <CustomizedDialogs store={store}/>
+      {/* <CustomizedDialogs store={store}/> */}
+      <Design store={store}/>
     </Navbar.Group>
   );
 });
