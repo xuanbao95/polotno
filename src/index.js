@@ -17,20 +17,13 @@ const  store  = createStore({
 });
 
 const page = store.addPage();
-
-const element=store.activePage.addElement({
+store.activePage.addElement({
   type:'text',
   text: 'hello',
   fontSize:60,
   width:400,
   height:100,
 });
-const json = store.toJSON();
-
-// load from JSON
-// remember that "json" should be a javascript object
-// if you have a json string, you may need to parse it - JSON.parse(string);
-store.loadJSON(json);
 store.setSize(414,736,true);
 ReactDOM.render(
   <React.StrictMode>

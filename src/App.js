@@ -9,7 +9,7 @@ import { DEFAULT_SECTIONS } from 'polotno/side-panel/side-panel';
 import { ZoomButtons } from 'polotno/toolbar/zoom-buttons';
 import Save from './ToolBar_save/Save';
 import DemoPhoto from './DemoPolotno';
-function App({ store }) {
+function App({ store,element }) {
  
   return (
     <div>

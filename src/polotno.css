@@ -17,3 +17,53 @@
     white-space: nowrap;
     margin: 0 5px;
 }
+#modalLink{
+    position: relative;
+}
+#modal{
+    position: absolute;
+    top:81px;
+    left: 375px;
+    border: 1px solid black;
+    background: white;
+}
+.addInput{
+    width: 95%;
+    margin-left: 7px;
+    margin-top: 10px;
+}
+.aButton{
+    margin-left: 106px;
+    margin-right: 8px;
+    margin-top: 5px;
+}
+.addLinkButton{
+    margin-left: 197px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.div_button{
+    border-bottom: 1px solid black;
+    height: 43px;
+    padding: 13px;
+}
+.tabButton{
+    border: none;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.tabButton:hover{
+    transition: 0.5s;
+    background: rgba(0, 0, 0, 0.233);
+}
+.tabOne ::after{
+    border-right: 1px solid black;
+}
+.tabTwo ::after{
+    border-left: 1px solid black;
+}
+.addlink{
+    margin-top: 13px;
+    margin-left: 195px;
+    cursor: pointer;
+}

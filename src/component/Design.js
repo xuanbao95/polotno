@@ -1,52 +1,117 @@
-// import React from 'react';
+import { display } from '@mui/system';
+import React from 'react';
 
-// export default function Design({store}){
 
-//     const [link,setLink]=React.useState();
+export default function Design({ store, openModal }) {
+    let elements = store.selectedElements[0];
+    const [oldLink, setOldLink] = React.useState([
+        { url: 'https://github.com/' },
+        { url: 'https://dev-ufala.upos.vn/' },
+        { url: 'https://www.figma.com/file/pZFx66WbIqWQAFFLJl2Mt2/Ufala' },
+        { url: 'https://www.google.com/' },
+        { url: 'https://www.youtube.com/' },
+    ]);
+    const [newLink, setNewLink] = React.useState([]);
+    const [open, setOpen] = React.useState(false);
 
-//     const element = store.selectedElements[0];
-//     const handleChange=(e)=>{
-//       let eValue=document.getElementById('url').value;
-//      setLink(eValue)
-    
-//     }
+    let local = JSON.parse(localStorage.getItem(elements));
+    const handleAddLink = () => {
+        let evalue = document.getElementById('url').value;
+        localStorage.setItem(elements, JSON.stringify(evalue));
+        setOpen(true)
 
-//     return(
-//         <div>
-//             <input id='url' type='text' value={link} onChange={handleChange} placeholder="http://example.com" />
-//             <button>add</button>
-//         </div>
-//     )
-// }
-import React, { Component } from 'react';
+    }
+    const handleDeleteLink = () => {
+        localStorage.removeItem(elements);
+        setOpen(false);
+    }
+    const AddNewLink = () => {
+        if (!open && local === null) {
+            return (
+                <div >
+                    <div>
+                    <h4 style={{marginLeft:"7px"}}>Nhập một link :</h4>
+                        <input id='url' className="addInput"/>
+                        <button style={{cursor: "pointer"}} className="addLinkButton" onClick={handleAddLink}>Cập nhật link</button>
+                    </div>
 
-class Design extends Component {
-    constructor(props){
-        super(props)
-        this.state={
-            value:this.setState(),
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h4 style={{marginLeft:"7px"}}>Link :</h4>
+                    <div>
+                        <input id='url' value={local} className="addInput"/>
+                        <button style={{cursor: "pointer"}} className="aButton"><a href={local} target="_blank">Truy cập liên kết</a></button>
+                        
+                        <button style={{cursor: "pointer"}} onClick={handleDeleteLink}>Xóa link</button>
+                    </div>
+                </div>
+            )
         }
     }
-     handleChange=(e)=>{
-        this.setState({
-            value:document.getElementById('url').value
-        })
+    const handleOnChange = (e) => {
+        setNewLink(e.target.value)
     }
-   
-    render() {
-        
+    const handleAddNewLink = () => {
+        let evalue = document.getElementById('newLink').value;
+        localStorage.setItem(elements, JSON.stringify(evalue));
+        localStorage.setItem(elements, JSON.stringify(evalue));
+        setOpen(true)
+
+    }
+    const linkStore = () => {
         return (
             <div>
-        <input 
-          defaultValue="Won't focus" 
-        />
-        <input 
-          ref={(input) => { this.nameInput = input; }} 
-          defaultValue="will focus"
-        />
-      </div>
-        );
+                    <h4 style={{marginLeft:"7px"}}>Kho link :</h4>
+                <div>
+                    <select id='newLink' value={oldLink.url} style={{maxWidth:'95%',marginLeft:"7px"}} label='Link' onChange={handleOnChange}  >
+                        {oldLink.map((item) => {
+                            return (
+                                <option value={item.url}>{item.url}</option>
+                            )
+                        })}
+                    </select>
+                    <button className='addlink' onClick={handleAddNewLink}>Cập nhật link</button>
+                </div>
+
+            </div>
+
+        )
     }
+    const handleTabOne = () => {
+        document.getElementById('tab-1').style.display = 'block';
+        document.getElementById('tab-2').style.display = "none"
+    }
+    const handleTabTwo = () => {
+        document.getElementById('tab-1').style.display = 'none';
+        document.getElementById('tab-2').style.display = "block";
+    }
+
+    return (
+        <div style={{ marginLeft: "10px" }}>
+            <i style={{cursor: "pointer"}} class="fas fa-link" id='modalLink' onClick={() => {
+                document.getElementById("modal").style.display = 'block';
+            }}></i>
+            <div id='modal' style={{ display: 'none',width:"300px",height:"165px"}}>
+                <div className="div_button">
+                    <button className="tabButton tabOne" onClick={handleTabOne}>Nhập một Link</button>
+                    <button className="tabButton tabTwo" onClick={handleTabTwo}>Chọn một link</button>
+                    <i style={{cursor: "pointer"}} class="far fa-window-close" onClick={() => {
+                    document.getElementById("modal").style.display = 'none';
+                }}></i>
+                </div>
+                <div id='tab-1' style={{ display: 'block' }}>
+                    {AddNewLink()}
+                </div>
+                <div id='tab-2' style={{ display: 'none' }}>
+                    {linkStore()}
+                </div>
+            </div>
+
+        </div>
+    )
 }
 
-export default Design;
+
