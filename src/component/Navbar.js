@@ -6,7 +6,8 @@ const useStyles = makeStyles({
     background: "linear-gradient(90deg,#33cccc 0%,#0085FF 100%)",
     maxWidth: "100%",
     color: "#ffffff",
-    padding:"11px"
+    padding:"11px",
+
   },
  
   span_back: {

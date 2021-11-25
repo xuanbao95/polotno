@@ -67,3 +67,30 @@
     margin-left: 195px;
     cursor: pointer;
 }
+.font{
+    width: 170px;
+    border: 1px solid #00000045;
+    border-radius: 50px;
+    height: 28px;
+    text-align: center;
+}
+.font .bp3-icon-caret-down{
+    margin-left: 70px;
+}
+.inputNum{
+    width: 50px;
+    text-align: center;
+    border-bottom: none;
+    border-top: none;
+    border-left: 1px solid #00000045;
+    border-right: 1px solid #00000045;
+    height: 26px;
+}
+.divInput{
+    margin-left: 10px;
+    border: 1px solid #00000045;
+    border-radius: 14px;
+    width: 94px;
+    text-align: center;
+    height: 28px;
+}

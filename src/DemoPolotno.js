@@ -51,7 +51,6 @@ function DemoPhoto({ store }) {
     ElementsSection,
     BackgroundSection,
     UploadSection,
-    TextSection,
   ];
   
   return (
@@ -63,7 +62,7 @@ function DemoPhoto({ store }) {
     >
         
       <SidePanelWrap>
-        <SidePanel store={store} sections={section} />
+        <SidePanel store={store} sections={section} defaultSection="template"  />
       </SidePanelWrap>
       <WorkspaceWrap>
         <Save store={store} />

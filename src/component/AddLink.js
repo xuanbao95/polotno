@@ -10,23 +10,22 @@ import {
   FontColorInput,
   SpacingInput,
 } from 'polotno/toolbar/text-toolbar';
-import { Button } from "@blueprintjs/core";
-import { Classes, Popover2 } from "@blueprintjs/popover2";
 import CustomizedDialogs from './Dialog';
 import Design from './Design';
+import Uppercase from './UpperCase';
+import Numberic from './Numberic';
 const TextToolbars = observer(({ store }) => {
-  const element = store.selectedElements[0];
-
   return (
     <Navbar.Group align={Alignment.LEFT}>
-      <FontColorInput store={store} elements={store.selectedElements} />
+      <div className="font">
       <FontFamilyInput store={store} elements={store.selectedElements} />
-      <FontSizeInput store={store} elements={store.selectedElements} />
-      <FontStyleGroup store={store} elements={store.selectedElements} />
-      <SpacingInput store={store} elements={store.selectedElements} />
-      {/* <CustomizedDialogs store={store}/> */}
+      </div>
+      <Numberic store={store} elements={store.selectedElements}/>
+      <FontColorInput store={store} elements={store.selectedElements} />
+      <FontStyleGroup store={store} elements={store.selectedElements} />  
+      <SpacingInput store={store} elements={store.selectedElements} /> 
+      <Uppercase store={store} elements={store.selectedElements}/>
       <Design store={store} elements={store.selectedElements}/>
-      
     </Navbar.Group>
   );
 });
