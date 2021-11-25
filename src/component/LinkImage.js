@@ -2,7 +2,7 @@ import { display } from '@mui/system';
 import React from 'react';
 
 
-export default function Design({ store, openModal }) {
+export default function LinkImage({ store }) {
     let elements = store.selectedElements[0];
     const [oldLink, setOldLink] = React.useState([
         { url: 'https://github.com/' },
@@ -90,8 +90,8 @@ export default function Design({ store, openModal }) {
     }
 
     return (
-        <div style={{ marginLeft: "10px" }}>
-            <i style={{cursor: "pointer",color:"#585e62"}} class="fas fa-link" id='modalLink' onClick={() => {
+        <div>
+            <i style={{cursor: "pointer"}} class="fas fa-link" id='modalLink' onClick={() => {
                 document.getElementById("modal").style.display = 'block';
             }}></i>
             <div id='modal' style={{ display: 'none',width:"300px",height:"165px"}}>

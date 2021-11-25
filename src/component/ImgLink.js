@@ -1,8 +1,10 @@
-import { display } from '@mui/system';
 import React from 'react';
-
-
-export default function Design({ store, openModal }) {
+import { observer } from 'mobx-react-lite';
+import LinkImage from './LinkImage';
+import { ImageToolbar } from 'polotno/toolbar/image-toolbar';
+import { Navbar, Alignment } from '@blueprintjs/core';
+import { unstable_registerToolbarComponent } from 'polotno/config';
+const ImgLink = observer(({ store }) => {
     let elements = store.selectedElements[0];
     const [oldLink, setOldLink] = React.useState([
         { url: 'https://github.com/' },
@@ -90,16 +92,18 @@ export default function Design({ store, openModal }) {
     }
 
     return (
-        <div style={{ marginLeft: "10px" }}>
-            <i style={{cursor: "pointer",color:"#585e62"}} class="fas fa-link" id='modalLink' onClick={() => {
-                document.getElementById("modal").style.display = 'block';
+        <div className='imgLink'>
+            <ImageToolbar store={store} elements={store.selectedElements}  />
+            <div className="lalala" style={{position:"absolute",top:"16px",left:"21rem"}}>
+<i style={{cursor: "pointer",color:"#585e62"}} class="fas fa-link" id='modalLinkImg' onClick={() => {
+                document.getElementById("modalImg").style.display = 'block';
             }}></i>
-            <div id='modal' style={{ display: 'none',width:"300px",height:"165px"}}>
+            <div id='modalImg' style={{ display: 'none',width:"300px",height:"165px"}}>
                 <div className="div_button">
                     <button className="tabButton tabOne" onClick={handleTabOne}>Nhập một Link</button>
                     <button className="tabButton tabTwo" onClick={handleTabTwo}>Chọn một link</button>
                     <i style={{cursor: "pointer"}} class="far fa-window-close" onClick={() => {
-                    document.getElementById("modal").style.display = 'none';
+                    document.getElementById("modalImg").style.display = 'none';
                 }}></i>
                 </div>
                 <div id='tab-1' style={{ display: 'block' }}>
@@ -110,8 +114,12 @@ export default function Design({ store, openModal }) {
                 </div>
             </div>
 
+        
+            </div>
+            
+            
         </div>
     )
-}
-
-
+});
+export default ImgLink;
+unstable_registerToolbarComponent('image', ImgLink)
