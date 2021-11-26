@@ -8,7 +8,7 @@ export const TemplatePanel=observer(({store})=>{
     //call api or load data
     
     const{data,isLoading}=useInfiniteAPI({
-        getAPI:({page})=>`templates/page${page}.json`,
+        getAPI:()=>`templates/page.json`,
     });
     return (
         <div style={{ height: '100%' }}>
@@ -16,11 +16,6 @@ export const TemplatePanel=observer(({store})=>{
             shadowEnabled={true}
             images={data?.map((data) => data.items).flat()}
             getPreview={(item) => `/templates/${item.preview}`}
-            // getPreview={async(item)=>{
-            //   const req=await fetch(`/templates/${item.json}`)
-            //   const img=await req.json();
-            //   store.loadJSON(img.src);
-            // }}
             isLoading={isLoading}
             onSelect={async (item) => {
               // download selected json

@@ -4,38 +4,23 @@ import MdPhotoLibrary from '@meronex/icons/md/MdPhotoLibrary';
 import { ImagesGrid } from 'polotno/side-panel/images-grid';
 import { useInfiniteAPI } from 'polotno/utils/use-api';
 import { SectionTab } from 'polotno/side-panel';
-export const StickyBar=observer(({store})=>{
+export const Demo=observer(({store})=>{
     //call api or load data
     
-    const{data,isLoading}=useInfiniteAPI({
-        getAPI:()=>`stickybar/page.json`,
+    // const{data}=useInfiniteAPI({
+    //     getAPI:()=>`demo/File/page.json`,
+    // });
+    // console.log(data);
+    const {img,isLoading}=useInfiniteAPI({
+        getAPI:()=>`demo/Preview/preview.json`
     });
-    
-    // const imgList=()=>{
-    //   if(data){
-    //     return data.map((item)=>{
-    //       if(item){
-    //         return item.pages.map((list)=>{
-    //           if(list){
-    //             return list.children.map((it)=>{
-    //               if(it.type==='image'){
-    //                 return <img src={it.src} width="100px" height="200px" onClick={handleSelect}/>
-    //               }
-    //             })
-    //           }
-    //         })
-    //       }
-    //     })
-    //   }
-    // }
-  
-    
+    console.log(img);
     return (
         <div style={{ height: '100%' }}>
           <ImagesGrid
             shadowEnabled={true}
-            images={data?.map((data) => data.items).flat()}
-            getPreview={(item) => `/stickybar/${item.preview}`}
+            images={img?.map((data)=>data.items).flat()}
+            getPreview={(item) => `/demo/Preview/${item.preview}`}
             // getPreview={async(item)=>{
             //   const req=await fetch(`/templates/${item.json}`)
             //   const img=await req.json();
@@ -44,27 +29,25 @@ export const StickyBar=observer(({store})=>{
             isLoading={isLoading}
             onSelect={async (item) => {
               // download selected json
-              const req = await fetch(`/stickybar/${item.json}`);
+              const req = await fetch(`/demo/Preview/${item.json}`);
               const json = await req.json();
               // just inject it into store
               store.loadJSON(json);
-              console.log(json);
             }}
             rowsNumber={2}
           />
-         
         </div>
       );
 })
 
-export const StickyBarSections={
-    name:"sticky",
+export const DemoSection={
+    name:"demo",
     Tab: (props) => (
-        <SectionTab name="Sticky Bar" {...props}>
+        <SectionTab name="Demo" {...props}>
           <MdPhotoLibrary />
         </SectionTab>
       ),
       // we need observer to update component automatically on any store changes
-      Panel: StickyBar,
+      Panel: Demo,
 }
 

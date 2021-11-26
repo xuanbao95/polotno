@@ -7,9 +7,6 @@ export default function Uppercase({store}){
     // for (const property in elements) {
     //     console.log(`${property}: ${elements[property]}`);
     //   }
-    for (const property in text) {
-        console.log(`${property}: ${text[property]}`);
-      }
     const handleUpperCase=()=>{
         if(text.fontStyle==="nomal"){
             text.set({text:text.text.toUpperCase()});

@@ -17,7 +17,7 @@ import ZoomButton from "./component/ZoomButton";
 import TextToolbars from './component/AddLink';
 import ImgLink from './component/ImgLink';
 import { StickyBarSections } from "./component/Templates/StickyBar";
-import {TestimonialSection} from './component/Templates/Testimonial'
+import {DemoSection} from './component/Templates/Demo'
 function DemoPhoto({ store }) {
   // const handleDrop = (ev) => {
   //   ev.preventDefault();
@@ -42,6 +42,7 @@ function DemoPhoto({ store }) {
     UploadSection,
     TextSection,
   StickyBarSections,
+  DemoSection
   ];
 
   return (
