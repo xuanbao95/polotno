@@ -30,7 +30,7 @@ import {TrustElementSection} from './component/Templates/TrustElement';
 import {PartnerSection} from './component/Templates/Partner';
 import {FooterSection} from './component/Templates/Footer';
 import {CTASection} from './component/Templates/CTA';
-
+import TextToolbars from './component/AddLink'
 function DemoPhoto({ store }) {
   const section = [
     ElementsSection,
