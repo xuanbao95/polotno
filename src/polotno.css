@@ -6,12 +6,21 @@
     overflow-x: hidden;
 
 }
+.bp3-button-text{
+    color: white;
+}
 .polotno-panel-container{
     background-color: #333f48;
     color:white;
     overflow: auto;
 
 };
+.bp3-tab{
+    color: white !important;
+}
+.bp3-dark .go906858498 .polotno-text-preview-plain{
+    filter: inherit;
+}
 .bp3-button .bp3-minimal{
     border: 1px solid black;
     border-radius: 15px;
