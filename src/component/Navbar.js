@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     borderRadius: "40px",
     background: "#ffffff",
     color: "black",
-    marginLeft: "11px",
+    marginLeft: "9px",
     cursor: "pointer",
   },
 });

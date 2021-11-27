@@ -14,39 +14,50 @@ import {
 import { CustomTemplateSection } from "./DemoTemplate/DemoTemplate";
 import Navbar from "./component/Navbar";
 import ZoomButton from "./component/ZoomButton";
-import TextToolbars from './component/AddLink';
-import ImgLink from './component/ImgLink';
 import { StickyBarSections } from "./component/Templates/StickyBar";
-import {DemoSection} from './component/Templates/Demo'
+import { DemoSection } from './component/Templates/Demo'
+import { TestimonialSection } from './component/Templates/Testimonial'
+import {FAQSection} from './component/Templates/FAQ';
+import {TimelineSection} from './component/Templates/TimeLine';
+import {OurTeamSection} from './component/Templates/OurTeam';
+import {GallerySection} from './component/Templates/Gallery';
+import {AboutUsSection} from './component/Templates/AboutUs';
+import {FormSection} from './component/Templates/Form';
+import {PricingSection} from './component/Templates/Pricing';
+import {HeroSection} from './component/Templates/Hero';
+import {CardSection} from './component/Templates/Card';
+import {TrustElementSection} from './component/Templates/TrustElement';
+import {PartnerSection} from './component/Templates/Partner';
+import {FooterSection} from './component/Templates/Footer';
+import {CTASection} from './component/Templates/CTA';
+
 function DemoPhoto({ store }) {
-  // const handleDrop = (ev) => {
-  //   ev.preventDefault();
-  //   let transAndDrop = ev.dataTransFer.items;
-  //   let transAndDropFile = ev.dataTransFer.files;
-  //   if (transAndDrop) {
-  //     for (let i = 0; i < transAndDrop.length; i++) {
-  //       if (transAndDrop[i].kind === "file") {
-  //         loadFile(transAndDrop[i].getAsFile(), store);
-  //       }
-  //     }
-  //   } else {
-  //     for (let i = 0; i < transAndDropFile[i].length; i++) {
-  //       loadFile(transAndDropFile[i], store);
-  //     }
-  //   }
-  // };
   const section = [
-    CustomTemplateSection,
     ElementsSection,
     BackgroundSection,
     UploadSection,
     TextSection,
-  StickyBarSections,
-  DemoSection
+    CustomTemplateSection,
+    StickyBarSections,
+    TestimonialSection,
+    DemoSection,
+    FAQSection,
+    TimelineSection,
+    OurTeamSection,
+    GallerySection,
+    AboutUsSection,
+    FormSection,
+    PricingSection,
+    HeroSection,
+    CardSection,
+    TrustElementSection,
+    PartnerSection,
+    FooterSection,
+    CTASection,
   ];
 
   return (
-    <div style={{ maxWidth: "100vw", height: "100vh" ,clear:"both" }}>
+    <div style={{ maxWidth: "100vw", height: "100vh", clear: "both" }}>
       <Navbar store={store} />
       <PolotnoContainer
         style={{ maxWidth: "100vw", height: "100vh" }}

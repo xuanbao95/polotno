@@ -8,14 +8,14 @@ export const Testimonial=observer(({store})=>{
     //call api or load data
     
     const{data,isLoading}=useInfiniteAPI({
-        getAPI:({page})=>`templates/page${page}.json`,
+        getAPI:()=>`testimonial/page.json`,
     });
     return (
         <div style={{ height: '100%' }}>
           <ImagesGrid
             shadowEnabled={true}
             images={data?.map((data) => data.items).flat()}
-            getPreview={(item) => `/templates/${item.preview}`}
+            getPreview={(item) => `/testimonial/${item.preview}`}
             // getPreview={async(item)=>{
             //   const req=await fetch(`/templates/${item.json}`)
             //   const img=await req.json();
@@ -24,7 +24,7 @@ export const Testimonial=observer(({store})=>{
             isLoading={isLoading}
             onSelect={async (item) => {
               // download selected json
-              const req = await fetch(`/templates/${item.json}`);
+              const req = await fetch(`/testimonial/${item.json}`);
               const json = await req.json();
               // just inject it into store
               store.loadJSON(json);
