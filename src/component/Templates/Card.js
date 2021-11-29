@@ -39,12 +39,11 @@ export const Card=observer(({store})=>{
 export const CardSection={
     name:"card",
     Tab: (props) => (
-        <SectionTab name="Card" {...props}>
+        <SectionTab name="card" {...props}>
           <MdPhotoLibrary />
         </SectionTab>
       ),
       // we need observer to update component automatically on any store changes
       Panel: Card,
 }
-
 

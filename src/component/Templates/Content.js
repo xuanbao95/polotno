@@ -4,18 +4,18 @@ import MdPhotoLibrary from '@meronex/icons/md/MdPhotoLibrary';
 import { ImagesGrid } from 'polotno/side-panel/images-grid';
 import { useInfiniteAPI } from 'polotno/utils/use-api';
 import { SectionTab } from 'polotno/side-panel';
-export const AboutUs=observer(({store})=>{
+export const Content=observer(({store})=>{
     //call api or load data
     
     const{data,isLoading}=useInfiniteAPI({
-        getAPI:()=>`aboutUs/page.json`,
+        getAPI:()=>`content/page.json`,
     });
     return (
         <div style={{ height: '100%' }}>
           <ImagesGrid
             shadowEnabled={true}
             images={data?.map((data) => data.items).flat()}
-            getPreview={(item) => `/aboutUs/${item.preview}`}
+            getPreview={(item) => `/content/${item.preview}`}
             // getPreview={async(item)=>{
             //   const req=await fetch(`/templates/${item.json}`)
             //   const img=await req.json();
@@ -24,7 +24,7 @@ export const AboutUs=observer(({store})=>{
             isLoading={isLoading}
             onSelect={async (item) => {
               // download selected json
-              const req = await fetch(`/aboutUs/${item.json}`);
+              const req = await fetch(`/content/${item.json}`);
               const json = await req.json();
               // just inject it into store
               store.loadJSON(json);
@@ -36,14 +36,14 @@ export const AboutUs=observer(({store})=>{
       );
 })
 
-export const AboutUsSection={
-    name:"about us",
+export const ContentSection={
+    name:"content",
     Tab: (props) => (
-        <SectionTab name="About us" {...props}>
+        <SectionTab name="content" {...props}>
           <MdPhotoLibrary />
         </SectionTab>
       ),
       // we need observer to update component automatically on any store changes
-      Panel: AboutUs,
+      Panel: Content,
 }
 

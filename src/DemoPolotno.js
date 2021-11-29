@@ -14,14 +14,12 @@ import {
 import { CustomTemplateSection } from "./DemoTemplate/DemoTemplate";
 import Navbar from "./component/Navbar";
 import ZoomButton from "./component/ZoomButton";
-import { StickyBarSections } from "./component/Templates/StickyBar";
 import { DemoSection } from './component/Templates/Demo'
 import { TestimonialSection } from './component/Templates/Testimonial'
 import {FAQSection} from './component/Templates/FAQ';
 import {TimelineSection} from './component/Templates/TimeLine';
 import {OurTeamSection} from './component/Templates/OurTeam';
 import {GallerySection} from './component/Templates/Gallery';
-import {AboutUsSection} from './component/Templates/AboutUs';
 import {FormSection} from './component/Templates/Form';
 import {PricingSection} from './component/Templates/Pricing';
 import {HeroSection} from './component/Templates/Hero';
@@ -31,6 +29,9 @@ import {PartnerSection} from './component/Templates/Partner';
 import {FooterSection} from './component/Templates/Footer';
 import {CTASection} from './component/Templates/CTA';
 import TextToolbars from './component/AddLink'
+import {AboutUs} from './component/Templates/AboutUs'
+import {StickBarSection} from './component/Templates/StickyBar'
+import {StatisticSection} from './component/Templates/Statistic'
 function DemoPhoto({ store }) {
   const section = [
     ElementsSection,
@@ -38,22 +39,8 @@ function DemoPhoto({ store }) {
     UploadSection,
     TextSection,
     CustomTemplateSection,
-    StickyBarSections,
-    TestimonialSection,
-    DemoSection,
-    FAQSection,
-    TimelineSection,
-    OurTeamSection,
-    GallerySection,
-    AboutUsSection,
-    FormSection,
-    PricingSection,
-    HeroSection,
-    CardSection,
-    TrustElementSection,
-    PartnerSection,
-    FooterSection,
-    CTASection,
+    
+    
   ];
 
   return (
@@ -62,13 +49,12 @@ function DemoPhoto({ store }) {
       <PolotnoContainer
         style={{ maxWidth: "100vw", height: "100vh" }}
       >
-
         <SidePanelWrap>
           <SidePanel store={store} sections={section} defaultSection="template" />
         </SidePanelWrap>
         <WorkspaceWrap>
           <Save store={store} />
-          <Toolbar store={store} downloadButtonEnabled />
+          <Toolbar store={store} />
           <Workspace store={store} />
           <ZoomButton store={store} />
         </WorkspaceWrap>

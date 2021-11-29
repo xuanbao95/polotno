@@ -10,7 +10,7 @@ import { createStore } from 'polotno/model/store';
 import './polotno.css'
 const  store  = createStore({
   container: document.getElementById('root'),
-  key: '', // you can create it here: https://polotno.dev/cabinet/
+  key: 'L135rEHrIWVtFugMsn-A', // you can create it here: https://polotno.dev/cabinet/
   // you can hide back-link on a paid licence
   // but it will be good if you can keep it for Polotno project support
   showCredit: true,

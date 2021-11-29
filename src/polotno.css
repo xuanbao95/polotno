@@ -1,3 +1,10 @@
+.go2713103140{
+    background-color: #293039;
+    color:white;
+}
+.go1822107527{
+    color: #293039;
+}
 .go1798861395 {
     background-color: #293039;
     color:white;
@@ -7,7 +14,7 @@
 
 }
 .bp3-button-text{
-    color: white;
+    color: #333f48;
 }
 .polotno-panel-container{
     background-color: #333f48;
@@ -123,4 +130,18 @@
     background: white;
 
 }
-
+.slickTemplate{
+    margin-bottom: 20px;
+}
+.tabLink{
+    width: 72%;
+    display: inline-block;
+    font-size: 11px;
+    height: 30px;
+    border-radius: 8px;
+    margin: 10px;
+}
+.slick-slider{
+    width: 239px;
+    margin-left: 19px;
+}
