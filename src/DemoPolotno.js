@@ -32,15 +32,15 @@ import TextToolbars from './component/AddLink'
 import {AboutUs} from './component/Templates/AboutUs'
 import {StickBarSection} from './component/Templates/StickyBar'
 import {StatisticSection} from './component/Templates/Statistic'
+import {ImgLink} from './component/ImgLink';
+import DemoSticky from "./component/Templates/DemoTemplate/DemoSticky";
 function DemoPhoto({ store }) {
   const section = [
+    CustomTemplateSection,
     ElementsSection,
     BackgroundSection,
     UploadSection,
-    TextSection,
-    CustomTemplateSection,
-    
-    
+    TextSection, 
   ];
 
   return (
@@ -50,7 +50,7 @@ function DemoPhoto({ store }) {
         style={{ maxWidth: "100vw", height: "100vh" }}
       >
         <SidePanelWrap>
-          <SidePanel store={store} sections={section} defaultSection="template" />
+          <SidePanel store={store} sections={section} defaultSection="custom template" />
         </SidePanelWrap>
         <WorkspaceWrap>
           <Save store={store} />

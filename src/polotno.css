@@ -134,14 +134,51 @@
     margin-bottom: 20px;
 }
 .tabLink{
-    width: 72%;
     display: inline-block;
     font-size: 11px;
     height: 30px;
     border-radius: 8px;
     margin: 10px;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    background: #0e0d0d00;
+    color: #ffffff8c;
+    border: 1px solid #00000066;
+    margin-left: 2px;
 }
 .slick-slider{
     width: 239px;
     margin-left: 19px;
+}
+.search{
+    position: relative;
+    
+    margin-bottom: 10px;
+}
+.icon{
+    position: absolute;
+    top: 0;
+    left: 257px;
+    color: rgba(0, 0, 0, 0.295);
+    font-size: 19px;
+    margin: 5px 0;
+}
+.inputSearch{
+    width: 282px;
+    height: 29px;
+}
+.imgTemp{
+    width: 80px !important;
+}
+.slickAll{
+    margin-bottom: 20px;
+}
+.slickAll .slick-slide{
+    width: 90px !important;
+}
+.slick_text{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }

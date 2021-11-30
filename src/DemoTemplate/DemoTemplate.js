@@ -24,8 +24,31 @@ import { TrustElement } from '../component/Templates/TrustElement';
 import { Partner } from '../component/Templates/Partner';
 import { Footer } from '../component/Templates/Footer';
 import { CTA } from '../component/Templates/CTA';
+import SearchIcon from '@mui/icons-material/Search';
+import Search from '@mui/icons-material/Search';
+import DemoSticky from '../component/Templates/DemoTemplate/DemoSticky';
+import DemoTestimonial from '../component/Templates/DemoTemplate/DemoTestiminal';
+import DemoStatistic from '../component/Templates/DemoTemplate/DemoStatistic';
+import DemoFAQ from '../component/Templates/DemoTemplate/DemoFAQ';
+import DemoTimeLine from '../component/Templates/DemoTemplate/DemoTimeLine';
+import DemoOurTeam from '../component/Templates/DemoTemplate/DemoOurTeam';
+import DemoGallery from '../component/Templates/DemoTemplate/DemoGallery';
+import DemoAboutUs from '../component/Templates/DemoTemplate/DemoAboutUs';
+import DemoForm from '../component/Templates/DemoTemplate/DemoForm';
+import DemoPricing from '../component/Templates/DemoTemplate/DemoPricing';
+import DemoContent from '../component/Templates/DemoTemplate/DemoContent';
+import DemoHero from '../component/Templates/DemoTemplate/DemoHero';
+import DemoCard from '../component/Templates/DemoTemplate/DemoCard';
+import DemoTrustElement from '../component/Templates/DemoTemplate/DemoTrustElement';
+import DemoPartner from '../component/Templates/DemoTemplate/DemoPartner';
+import DemoFooter from '../component/Templates/DemoTemplate/DemoFooter';
+import DemoCTA from '../component/Templates/DemoTemplate/DemoCTA';
 export const DemoTemplate = observer(({ store }) => {
   //call api or load data
+
+
+ 
+  
   const handleChangeTab = (e, id) => {
     let tabChange = document.getElementsByClassName("tabContent");
     for (let i = 0; i < tabChange.length; i++) {
@@ -40,17 +63,21 @@ export const DemoTemplate = observer(({ store }) => {
   }
   var settings = {
     dots: false,
-    slidesToShow: 3,
-    slidesToScroll: 3
+    slidesToShow: 4,
+    slidesToScroll: 4
   };
   return (
     <div style={{ height: '100%' }}>
+      <div  className="search" >
+        <Search className='icon'/>
+        <input type='search' className="inputSearch" placeholder="Search..."/>
+      </div>
       <div className="slickTemplate">
         <Slider {...settings}>
          <button onClick={(e) => handleChangeTab(e, 'sticky')} className="tabLink">Sticky</button>
          <button onClick={(e) => handleChangeTab(e, 'testimonial')} className="tabLink">Testimonial</button>
          <button onClick={(e) => handleChangeTab(e, 'statistic')} className="tabLink">Statistic</button>
-         <button onClick={(e) => handleChangeTab(e, 'fqa')} className="tabLink">FQA</button>
+         <button onClick={(e) => handleChangeTab(e, 'faq')} className="tabLink">FAQ</button>
          <button onClick={(e) => handleChangeTab(e, 'timeLine')} className="tabLink">Time Line</button>
          <button onClick={(e) => handleChangeTab(e, 'ourTeam')} className="tabLink">Our Team</button>
          <button onClick={(e) => handleChangeTab(e, 'gallery')} className="tabLink">Gallery</button>
@@ -68,7 +95,7 @@ export const DemoTemplate = observer(({ store }) => {
         </Slider>
 
       </div>
-      <div id="sticky" className="tabContent"  >
+      <div id="sticky" className="tabContent" style={{ display: 'none' }} >
         <StickBar store={store} />
       </div>
       <div id="about" className="tabContent" style={{ display: 'none' }}>
@@ -77,7 +104,7 @@ export const DemoTemplate = observer(({ store }) => {
       <div id="testimonial" className="tabContent" style={{ display: 'none' }}>
         <Testimonial store={store} />
       </div>
-      <div id="fqa" className="tabContent" style={{ display: 'none' }}>
+      <div id="faq" className="tabContent" style={{ display: 'none' }}>
         <FAQ store={store} />
       </div>
       <div id="statistic" className="tabContent" style={{ display: 'none' }}>
@@ -119,7 +146,25 @@ export const DemoTemplate = observer(({ store }) => {
       <div id="cta" className="tabContent" style={{ display: 'none' }}>
         <CTA store={store}/>
       </div>
-
+    <div id="showAll" className="tabContent" style={{display:'block'}}>
+        <DemoSticky store={store}/>
+        <DemoTestimonial store={store}/>
+        <DemoStatistic store={store}/>
+        <DemoFAQ store={store}/>
+        <DemoTimeLine store={store}/>
+        <DemoOurTeam store={store}/>
+        <DemoGallery store={store}/>
+        <DemoAboutUs store={store}/>
+        <DemoForm store={store}/>
+        <DemoPricing store={store}/>
+        <DemoContent store={store}/>
+        <DemoHero store={store}/>
+        <DemoCard store={store}/>
+        <DemoTrustElement store={store}/>
+        <DemoPartner store={store}/>
+        <DemoFooter store={store}/>
+        <DemoCTA store={store}/>
+    </div>
 
     </div>
   );
