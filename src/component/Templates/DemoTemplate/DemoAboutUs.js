@@ -16,15 +16,21 @@ export default function DemoSticky({ store }) {
             return data.map((data) => {
                 if (data.items) {
                     return data.items.map((item) => {
-                        return (<img className="imgTemp" src={`/aboutUs/${item.preview}`} onClick={async () => {
-                            // download selected json
-                            const req = await fetch(`/aboutUs/${item.json}`);
+                        console.log(`url(/aboutUs/${item.preview})`);
+                        return (
+                        // <img className="imgTemp" src={`/aboutUs/${item.preview}`} onClick={async () => {
+                        //     // download selected json
+                        //     const req = await fetch(`/aboutUs/${item.json}`);
 
-                            const json = await req.json();
-                            // just inject it into store
-                            store.loadJSON(json);
-                            console.log(json);
-                        }} />)
+                        //     const json = await req.json();
+                        //     // just inject it into store
+                        //     store.loadJSON(json);
+                        //     console.log(json);
+                        // }} />
+                        <div className="imgTemp" >
+                            <div style={{backgroundImage:`url(/aboutUs/${item.preview})`,backgroundPosition:"center",backgroundSize:"cover",height:"100%"}}></div>
+                        </div>
+                        )
                     })
                 }
             })

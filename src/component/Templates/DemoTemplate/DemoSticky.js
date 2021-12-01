@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import logo from '../../../logo192.png'
 import Image from 'material-ui-image'
+
 export default function DemoSticky({ store }) {
     const { data } = useInfiniteAPI({
         getAPI: () => `stickyBar/page.json`,
@@ -16,15 +17,20 @@ export default function DemoSticky({ store }) {
             return data.map((data) => {
                 if (data.items) {
                     return data.items.map((item) => {
-                        return (<img className="imgTemp" src={`/stickyBar/${item.preview}`} onClick={async () => {
-                            // download selected json
-                            const req = await fetch(`/stickyBar/${item.json}`);
-
-                            const json = await req.json();
-                            // just inject it into store
-                            store.loadJSON(json);
-                            console.log(json);
-                        }} />)
+                        return (
+                            // <img className="imgTemp" src={`/stickyBar/${item.preview}`} onClick={async () => {
+                            //     // download selected json
+                            //     const req = await fetch(`/stickyBar/${item.json}`);
+    
+                            //     const json = await req.json();
+                            //     // just inject it into store
+                            //     store.loadJSON(json);
+                            //     console.log(json);
+                            // }} />
+                            <div className="imgTemp">
+                                <div style={{backgroundImage:`url('/stickyBar/${item.preview}')`,backgroundPosition:"center",backgroundSize:"cover",height:"80px",width:"80px"}}></div>
+                            </div>
+                        )
                     })
                 }
             })
