@@ -37,6 +37,22 @@
     white-space: nowrap;
     margin: 0 5px;
 }
+.go4160152499::-webkit-scrollbar-track {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 2px 0;
+    background-color: #404040;
+  }
+.go4160152499::-webkit-scrollbar{
+    width: 10px;
+    
+}
+.go4160152499::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: grey;
+    border: 1px solid #000;
+  }
 #modalLink{
     position: relative;
 }
@@ -151,25 +167,43 @@
     width: 239px;
     margin-left: 19px;
 }
+
 .search{
-    position: relative;
-    
-    margin-bottom: 10px;
-}
-.icon{
     position: absolute;
-    top: 0;
-    left: 257px;
-    color: rgba(0, 0, 0, 0.295);
-    font-size: 19px;
-    margin: 5px 0;
+    top: 4px;
+    left: 10px;
+    z-index: 3;
 }
+.search-index{
+    position: relative;
+    top: 73px;
+    left: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.search-index::-webkit-scrollbar-track {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 2px 0;
+    background-color: #404040;
+  }
+.search-index::-webkit-scrollbar{
+    width: 10px;
+    
+}
+.search-index::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: grey;
+    border: 1px solid #000;
+  }
 .inputSearch{
     width: 282px;
     height: 29px;
 }
 .imgTemp{
-    width: 80px !important;
+    width: 90% !important;
+    height: 100%;
 }
 .slickAll{
     margin-bottom: 20px;
@@ -178,7 +212,10 @@
     width: 90px !important;
 }
 .slick_text{
-    display: flex;
-    justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
     margin-bottom: 10px;
+};
+.slick_text .spanLink{
+    margin-left: 135px;
 }

@@ -3,19 +3,23 @@
   "items": [
     {
       "json": "polotno.json",
-      "preview": "polotno.png"
+      "preview": "Frame 766.png"
     },
     {
       "json": "pic.json",
-      "preview": "pic.png"
+      "preview": "Frame 767.png"
     },
     {
       "json": "lala.json",
-      "preview": "lala.png"
+      "preview": "Frame 768.png"
     },
     {
       "json": "baola.json",
-      "preview": "baola.png"
+      "preview": "Frame 769.png"
+    },
+    {
+      "json": "baola.json",
+      "preview": "Frame 770.png"
     }
     
   ]

@@ -30,10 +30,6 @@ export default function DemoSticky({ store }) {
             })
         }
     }
-    const handleChangeSlick=()=>{
-        document.getElementById("slick-block").style.display="none";
-        document.getElementById('slick-none').style.display="block";
-    }
     const settings = {
         dot: false,
         slideToShow: 2,
@@ -41,10 +37,6 @@ export default function DemoSticky({ store }) {
     }
     return (
         <div className="slickAll">
-            <div className="slick_text">
-                <span style={{fontSize:'20px'}}>Sticky bar</span>
-                <span onClick={handleChangeSlick} style={{cursor:'pointer'}}>More...</span>
-            </div>
             <div id="slick-block" style={{display:"block"}}>
                 <Slider {...settings}>
                     {img()}

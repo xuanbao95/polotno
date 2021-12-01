@@ -3,19 +3,43 @@
   "items": [
     {
       "json": "polotno.json",
-      "preview": "polotno.png"
+      "preview": "Frame 715.png"
     },
     {
       "json": "pic.json",
-      "preview": "pic.png"
+      "preview": "Frame 716.png"
     },
     {
       "json": "lala.json",
-      "preview": "lala.png"
+      "preview": "Frame 717.png"
     },
     {
       "json": "baola.json",
-      "preview": "baola.png"
+      "preview": "Frame 718.png"
+    },
+    {
+      "json": "polotno.json",
+      "preview": "Frame 719.png"
+    },
+    {
+      "json": "pic.json",
+      "preview": "Frame 796.png"
+    },
+    {
+      "json": "lala.json",
+      "preview": "Frame 797.png"
+    },
+    {
+      "json": "baola.json",
+      "preview": "Frame 798.png"
+    },
+    {
+      "json": "baola.json",
+      "preview": "Frame 799.png"
+    },
+    {
+      "json": "baola.json",
+      "preview": "Frame 800.png"
     }
     
   ]

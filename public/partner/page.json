@@ -3,20 +3,25 @@
   "items": [
     {
       "json": "polotno.json",
-      "preview": "polotno.png"
+      "preview": "Frame 771.png"
     },
     {
       "json": "pic.json",
-      "preview": "pic.png"
+      "preview": "Frame 772.png"
     },
     {
       "json": "lala.json",
-      "preview": "lala.png"
+      "preview": "Frame 773.png"
     },
     {
       "json": "baola.json",
-      "preview": "baola.png"
+      "preview": "Frame 774.png"
+    },
+    {
+      "json": "baola.json",
+      "preview": "Frame 775.png"
     }
+    
     
   ]
 }

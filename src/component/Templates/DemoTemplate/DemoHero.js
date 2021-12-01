@@ -41,10 +41,6 @@ export default function DemoSticky({ store }) {
     }
     return (
         <div className="slickAll">
-            <div className="slick_text">
-                <span style={{fontSize:'20px'}}>Hero</span>
-                <span onClick={handleChangeSlick} style={{cursor:'pointer'}}>More...</span>
-            </div>
             <div id="slick-block" style={{display:"block"}}>
                 <Slider {...settings}>
                     {img()}
