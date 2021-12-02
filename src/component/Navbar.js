@@ -1,15 +1,16 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
+import { downloadFile } from 'polotno/utils/download';
 const useStyles = makeStyles({
   root: {
     height: "56px",
     background: "linear-gradient(90deg,#33cccc 0%,#0085FF 100%)",
     maxWidth: "100%",
     color: "#ffffff",
-    padding:"11px",
+    padding: "11px",
 
   },
- 
+
   span_back: {
     marginLeft: "13px",
   },
@@ -52,7 +53,7 @@ export default function Navbar({ store }) {
   return (
     <div className={classes.root}>
       <span>
-        <a href="https://dev-ufala.upos.vn/" className={classes.span_a} style={{textDecoration:"none",fontWeight:"150"}}>
+        <a href="https://dev-ufala.upos.vn/" className={classes.span_a} style={{ textDecoration: "none", fontWeight: "150" }}>
           <i class="fas fa-chevron-left" style={{ marginLeft: "30px" }}></i>
           <span className={classes.span_back}>Trở về trang chủ</span>
         </a>
@@ -82,7 +83,7 @@ export default function Navbar({ store }) {
           paddingLeft: "4px",
           paddingTop: "5px",
           cursor: "pointer",
-          fontSize:"10px"
+          fontSize: "10px"
         }}
       ></i>
       <i
@@ -99,11 +100,21 @@ export default function Navbar({ store }) {
           paddingLeft: "5px",
           paddingTop: "4px",
           cursor: "pointer",
-          fontSize:"12px"
+          fontSize: "12px"
         }}
       ></i>
       <button className={classes.button_one}>Xem trước</button>
-      <button className={classes.button_two}>Xuất bản</button>
+      <button className={classes.button_two} onClick={() => {
+        //tạo object lưu trữ json
+        let json = store.toJSON();
+        //xử lý dử liệu url thành JSON
+        let url = 'data:text/json;base64,' +
+          window.btoa(unescape(encodeURIComponent(JSON.stringify(json))));
+        downloadFile(url, 'polotno.json');
+        store.saveAsImage({ fileName: 'polotno.png' });
+
+
+      }}>Xuất bản</button>
     </div>
   );
 }

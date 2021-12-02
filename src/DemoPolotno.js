@@ -52,15 +52,14 @@ function DemoPhoto({ store }) {
             <SidePanel store={store} sections={section} defaultSection="custom template" />
           </SidePanelWrap>
           <WorkspaceWrap>
-            <Save store={store} />
-            <Toolbar store={store} downloadButtonEnabled />
-            <Workspace store={store} />
+            <Toolbar store={store} hideTextEffects={false} downloadButtonEnabled={false} />
+            <Workspace store={store} pageControlsEnabled={false} />
             <ZoomButton store={store} />
           </WorkspaceWrap>
         </PolotnoContainer>
       </div>
+        
     </div>
-
   );
 }
 export default DemoPhoto;

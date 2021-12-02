@@ -4,8 +4,6 @@ import { ImagesGrid } from 'polotno/side-panel/images-grid';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import logo from '../../../logo192.png'
-import Image from 'material-ui-image'
 
 export default function DemoSticky({ store }) {
     const { data } = useInfiniteAPI({
@@ -28,7 +26,15 @@ export default function DemoSticky({ store }) {
                             //     console.log(json);
                             // }} />
                             <div className="imgTemp">
-                                <div style={{backgroundImage:`url('/stickyBar/${item.preview}')`,backgroundPosition:"center",backgroundSize:"cover",height:"80px",width:"80px"}}></div>
+                                <div onClick={async () => {
+                                // download selected json
+                                const req = await fetch(`/stickyBar/${item.json}`);
+    
+                                const json = await req.json();
+                                // just inject it into store
+                                store.loadJSON(json);
+                                console.log(json);
+                            }} style={{backgroundImage:`url('/stickyBar/${item.preview}')`,backgroundPosition:"center",backgroundSize:"contain",backgroundRepeat:"no-repeat",height:"100px",width:"100%"}}></div>
                             </div>
                         )
                     })
@@ -40,6 +46,8 @@ export default function DemoSticky({ store }) {
         dot: false,
         slideToShow: 2,
         SlideToScroll: 1,
+        infinite: true,
+
     }
     return (
         <div className="slickAll">

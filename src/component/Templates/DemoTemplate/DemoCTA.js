@@ -16,15 +16,17 @@ export default function DemoSticky({ store }) {
             return data.map((data) => {
                 if (data.items) {
                     return data.items.map((item) => {
-                        return (<img className="imgTemp" src={`/cta/${item.preview}`} onClick={async () => {
-                            // download selected json
-                            const req = await fetch(`/cta/${item.json}`);
-
-                            const json = await req.json();
-                            // just inject it into store
-                            store.loadJSON(json);
-                            console.log(json);
-                        }} />)
+                        return (<div className="imgTemp" >
+                        <div onClick={async () => {
+                                // download selected json
+                                const req = await fetch(`/cta/${item.json}`);
+    
+                                const json = await req.json();
+                                // just inject it into store
+                                store.loadJSON(json);
+                                console.log(json);
+                            }} style={{backgroundImage:`url('/cta/${item.preview}')`,backgroundPosition:"center",backgroundSize:"contain",backgroundRepeat:"no-repeat",height:"100px",width:"100%"}}></div>
+                    </div>)
                     })
                 }
             })
@@ -36,6 +38,7 @@ export default function DemoSticky({ store }) {
     }
     const settings = {
         dot: false,
+        infinite: true,
         slideToShow: 2,
         SlideToScroll: 1,
     }

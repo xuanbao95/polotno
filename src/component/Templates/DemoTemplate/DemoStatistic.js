@@ -16,15 +16,17 @@ export default function DemoSticky({ store }) {
             return data.map((data) => {
                 if (data.items) {
                     return data.items.map((item) => {
-                        return (<img className="imgTemp" src={`/statistic/${item.preview}`} onClick={async () => {
-                            // download selected json
-                            const req = await fetch(`/statistic/${item.json}`);
-
-                            const json = await req.json();
-                            // just inject it into store
-                            store.loadJSON(json);
-                            console.log(json);
-                        }} />)
+                        return (<div className="imgTemp" >
+                        <div onClick={async () => {
+                                // download selected json
+                                const req = await fetch(`/statistic/${item.json}`);
+    
+                                const json = await req.json();
+                                // just inject it into store
+                                store.loadJSON(json);
+                                console.log(json);
+                            }} style={{backgroundImage:`url('/statistic/${item.preview}')`,backgroundPosition:"center",backgroundSize:"contain",backgroundRepeat:"no-repeat",height:"100px",width:"100%"}}></div>
+                    </div>)
                     })
                 }
             })
@@ -38,6 +40,7 @@ export default function DemoSticky({ store }) {
         dot: false,
         slideToShow: 2,
         SlideToScroll: 1,
+        infinite: true,
     }
     return (
         <div className="slickAll">

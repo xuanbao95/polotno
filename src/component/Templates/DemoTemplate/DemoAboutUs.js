@@ -16,19 +16,17 @@ export default function DemoSticky({ store }) {
             return data.map((data) => {
                 if (data.items) {
                     return data.items.map((item) => {
-                        console.log(`url(/aboutUs/${item.preview})`);
                         return (
-                        // <img className="imgTemp" src={`/aboutUs/${item.preview}`} onClick={async () => {
-                        //     // download selected json
-                        //     const req = await fetch(`/aboutUs/${item.json}`);
+                        <div className="imgTemp" onClick={async () => {
+                            // download selected json
+                            const req = await fetch(`/aboutUs/${item.json}`);
 
-                        //     const json = await req.json();
-                        //     // just inject it into store
-                        //     store.loadJSON(json);
-                        //     console.log(json);
-                        // }} />
-                        <div className="imgTemp" >
-                            <div style={{backgroundImage:`url(/aboutUs/${item.preview})`,backgroundPosition:"center",backgroundSize:"cover",height:"100%"}}></div>
+                            const json = await req.json();
+                            // just inject it into store
+                            store.loadJSON(json);
+                            console.log(json);
+                        }}  >
+                            <div style={{backgroundImage:`url('/aboutUs/${item.preview}')`,backgroundPosition:"center",backgroundSize:"contain",backgroundRepeat:"no-repeat",height:"100px",width:"100%"}}></div>
                         </div>
                         )
                     })
@@ -36,14 +34,11 @@ export default function DemoSticky({ store }) {
             })
         }
     }
-    const handleChangeSlick=()=>{
-        document.getElementById("slick-block").style.display="none";
-        document.getElementById('slick-none').style.display="block";
-    }
     const settings = {
         dot: false,
-        slideToShow: 2,
-        SlideToScroll: 1,
+        infinite: true,
+        slideToShow: 4,
+        SlideToScroll: 4,
     }
     return (
         <div className="slickAll">

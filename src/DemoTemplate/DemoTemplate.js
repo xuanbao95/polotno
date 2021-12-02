@@ -1,8 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite';
 import MdPhotoLibrary from '@meronex/icons/md/MdPhotoLibrary';
-import { ImagesGrid } from 'polotno/side-panel/images-grid';
-import { useInfiniteAPI } from 'polotno/utils/use-api';
 import { SectionTab } from 'polotno/side-panel';
 import { AboutUs } from '../component/Templates/AboutUs';
 import { StickBar } from '../component/Templates/StickyBar';
@@ -24,8 +22,6 @@ import { TrustElement } from '../component/Templates/TrustElement';
 import { Partner } from '../component/Templates/Partner';
 import { Footer } from '../component/Templates/Footer';
 import { CTA } from '../component/Templates/CTA';
-import SearchIcon from '@mui/icons-material/Search';
-import Search from '@mui/icons-material/Search';
 import DemoSticky from '../component/Templates/DemoTemplate/DemoSticky';
 import DemoTestimonial from '../component/Templates/DemoTemplate/DemoTestiminal';
 import DemoStatistic from '../component/Templates/DemoTemplate/DemoStatistic';
@@ -46,8 +42,64 @@ import DemoCTA from '../component/Templates/DemoTemplate/DemoCTA';
 export const DemoTemplate = observer(({ store }) => {
   //call api or load data
 
-  const[valueSearch,setValueSearch]=React.useState()
-
+  const [valueSearch, setValueSearch] = React.useState()
+  const [template, setTemplate] = React.useState([
+    { id: 'sticky', name: 'Sticky' },
+    { id: 'testimonial', name: 'Testi monial' },
+    { id: 'statistic', name: 'Statistic' },
+    { id: 'faq', name: 'FAQ' },
+    { id: 'timeLine', name: 'Time Line' },
+    { id: 'ourTeam', name: 'Our Team' },
+    { id: 'gallery', name: 'Gallery' },
+    { id: 'about', name: 'About' },
+    { id: 'form', name: 'Form' },
+    { id: 'pricing', name: 'Pricing' },
+    { id: 'content', name: 'Content' },
+    { id: 'hero', name: 'Hero' },
+    { id: 'card', name: 'Card' },
+    { id: 'trustElement', name: 'Trust Element' },
+    { id: 'partner', name: 'Partner' },
+    { id: 'footer', name: 'Footer' },
+    { id: 'cta', name: 'CTA' },
+  ])
+  const [componentTemplate, setComponentTemplate] = React.useState([
+    { com: <StickBar store={store} />, id: "sticky", name: "sticky bar" },
+    { com: <AboutUs store={store} />, id: "about", name: 'about us' },
+    { com: <Testimonial store={store} />, id: "testimonial", name: 'testimonial' },
+    { com: <FAQ store={store} />, id: "faq", name: 'FAQ' },
+    { com: <Statistic store={store} />, id: "statistic", name: 'statistic' },
+    { com: <Timeline store={store} />, id: "timeLine", name: 'time line' },
+    { com: <OurTeam store={store} />, id: "ourTeam", name: 'ourTeam' },
+    { com: <Gallery store={store} />, id: "gallery", name: 'gallery' },
+    { com: <Form store={store} />, id: "form", name: 'form' },
+    { com: <Pricing store={store} />, id: "pricing", name: 'pricing' },
+    { com: <Content store={store} />, id: "content", name: 'content' },
+    { com: <Hero store={store} />, id: "hero", name: 'hero' },
+    { com: <Card store={store} />, id: "card", name: 'card' },
+    { com: <TrustElement store={store} />, id: "trustElement", name: 'trust Element' },
+    { com: <Partner store={store} />, id: "partner", name: 'partner' },
+    { com: <Footer store={store} />, id: "footer", name: 'footer' },
+    { com: <CTA store={store} />, id: "cta", name: 'cta' },
+  ])
+  const [demoTemplate, setDemoTemplate] = React.useState([
+    { demo: <DemoSticky store={store} />, name: 'Sticky Bar', id: "sticky" },
+    { demo: <DemoTestimonial store={store} />, name: 'Testimonial', id: "testimonial" },
+    { demo: <DemoStatistic store={store} />, name: 'Statistic', id: "statistic" },
+    { demo: <DemoFAQ store={store} />, name: 'FAQ', id: "faq" },
+    { demo: <DemoTimeLine store={store} />, name: 'Time Line', id: "timeLine" },
+    { demo: <DemoOurTeam store={store} />, name: 'Our Team', id: "ourTeam" },
+    { demo: <DemoGallery store={store} />, name: 'Gallery', id: "gallery" },
+    { demo: <DemoAboutUs store={store} />, name: 'About Us', id: "about" },
+    { demo: <DemoForm store={store} />, name: 'Form', id: "form" },
+    { demo: <DemoPricing store={store} />, name: 'Pricing', id: "pricing" },
+    { demo: <DemoContent store={store} />, name: 'Content', id: "content" },
+    { demo: <DemoHero store={store} />, name: 'Hero', id: "hero" },
+    { demo: <DemoCard store={store} />, name: 'Card', id: "card" },
+    { demo: <DemoTrustElement store={store} />, name: 'Trust Element', id: "trustElement" },
+    { demo: <DemoPartner store={store} />, name: 'Partner', id: "partner" },
+    { demo: <DemoFooter store={store} />, name: 'Footer', id: "footer" },
+    { demo: <DemoCTA store={store} />, name: 'CTA', id: "cta" },
+  ])
   const handleChangeLink = (e, id) => {
     let tabChange = document.getElementsByClassName("tabContent");
     for (let i = 0; i < tabChange.length; i++) {
@@ -58,8 +110,8 @@ export const DemoTemplate = observer(({ store }) => {
       tabButton[i].className = tabButton[i].className.replace(" active", "");
     }
     document.getElementById(id).style.display = "block";
-    let name=document.getElementById(id).getAttribute("name")
-    document.getElementById('searchInput').value=name;
+    let name = document.getElementById(id).getAttribute("name")
+    document.getElementById('searchInput').value = name;
 
   }
   const handleChangeTab = (e, id) => {
@@ -75,235 +127,107 @@ export const DemoTemplate = observer(({ store }) => {
     document.getElementById("sticky").click();
     setValueSearch(document.getElementById(id).getAttribute("name"))
   }
-  const clearInput=()=>{
+  const clearInput = () => {
     document.getElementById('searchInput').addEventListener('search', (e) => {
       let tabChange = document.getElementsByClassName("tabContent");
-    for (let i = 0; i < tabChange.length; i++) {
-      tabChange[i].style.display = 'none'
-    }
-      document.getElementById('showAll').style.display='block'
+      for (let i = 0; i < tabChange.length; i++) {
+        tabChange[i].style.display = 'none'
+      }
+      document.getElementById('showAll').style.display = 'block'
 
     })
-    document.getElementById('searchInput').value='';
+    document.getElementById('searchInput').value = '';
+  }
+  const buttonTemplate = () => {
+    if (template) {
+      return template.map((item) => {
+        return (
+          <div style={{ margin: "15px" }}>
+            <div className="button_template" style={{ width: "100%" }} >
+              <button onClick={(e) => handleChangeTab(e, `${item.id}`)} className="tabLink">{item.name}</button>
+            </div>
+          </div>
+
+        )
+      })
+    }
+  }
+  const componentTemplates = () => {
+    if (componentTemplate) {
+      return componentTemplate.map((item) => {
+        return (
+          <div id={item.id} name={item.name} className="tabContent" style={{ display: 'none' }} >
+            {item.com}
+          </div>
+        )
+      })
+    }
+  }
+  const demoTeamplates = () => {
+    if (demoTemplate) {
+      return demoTemplate.map((item) => {
+        return (
+          <div>
+            <div className="slick_text" style={{ marginTop: "14px" }}>
+              <span style={{ fontSize: '14px' }} className='nameTemplate'>{item.name}</span>
+              <span onClick={(e) => handleChangeLink(e, `${item.id}`)} className="spanLink" style={{ cursor: 'pointer', marginRight: "24px", }}>Xem tất cả</span>
+            </div>
+            {item.demo}
+          </div>
+        )
+      })
+    }
+  }
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", border: "none",fontSize: "14px",top: "32%",background:"none"}}
+        onClick={onClick}
+      />
+    );
   }
   
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", border: "none",fontSize: "14px",top: "32%",background:"none"}}
+        onClick={onClick}
+      />
+    );
+  }
   var settings = {
     dots: false,
     slidesToShow: 4,
-    slidesToScroll: 4
+    slidesToScroll: 4,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />
   };
+
+  console.log(componentTemplate);
   return (
     <div style={{ height: '100%', }} >
 
       <div className="search">
         <form type='submit'>
-        <input type='search' id='searchInput' value={valueSearch} onClick={clearInput} className="inputSearch" placeholder="Search..." />
-          </form>
-        
+          <input type='search' id='searchInput' value={valueSearch} onClick={clearInput} className="inputSearch" placeholder="Search..." />
+        </form>
         <div className="slickTemplate">
           <Slider {...settings}>
-            <button onClick={(e) => handleChangeTab(e, 'sticky')} className="tabLink">Sticky</button>
-            <button onClick={(e) => handleChangeTab(e, 'testimonial')} className="tabLink">Testimonial</button>
-            <button onClick={(e) => handleChangeTab(e, 'statistic')} className="tabLink">Statistic</button>
-            <button onClick={(e) => handleChangeTab(e, 'faq')} className="tabLink">FAQ</button>
-            <button onClick={(e) => handleChangeTab(e, 'timeLine')} className="tabLink">Time Line</button>
-            <button onClick={(e) => handleChangeTab(e, 'ourTeam')} className="tabLink">Our Team</button>
-            <button onClick={(e) => handleChangeTab(e, 'gallery')} className="tabLink">Gallery</button>
-            <button onClick={(e) => handleChangeTab(e, 'about')} className="tabLink">About</button>
-            <button onClick={(e) => handleChangeTab(e, 'form')} className="tabLink">Form</button>
-            <button onClick={(e) => handleChangeTab(e, 'pricing')} className="tabLink">Pricing</button>
-            <button onClick={(e) => handleChangeTab(e, 'content')} className="tabLink">Content</button>
-            <button onClick={(e) => handleChangeTab(e, 'hero')} className="tabLink">Hero</button>
-            <button onClick={(e) => handleChangeTab(e, 'card')} className="tabLink">Card</button>
-            <button onClick={(e) => handleChangeTab(e, 'trustElement')} className="tabLink">Trust Element</button>
-            <button onClick={(e) => handleChangeTab(e, 'partner')} className="tabLink">Partner</button>
-            <button onClick={(e) => handleChangeTab(e, 'footer')} className="tabLink">Footer</button>
-            <button onClick={(e) => handleChangeTab(e, 'cta')} className="tabLink">CTA</button>
-
+            {buttonTemplate()}
           </Slider>
-
         </div>
       </div>
+
       <div className="search-index" style={{ maxHeight: '90%' }}>
-        <div id="sticky" name='sticky bar' className="tabContent" style={{ display: 'none' }} >
-
-          <StickBar store={store} />
-        </div>
-        <div id="about" name='about us'  className="tabContent" style={{ display: 'none' }}>
-          <AboutUs store={store} />
-        </div>
-        <div id="testimonial" name='testimonial'  className="tabContent" style={{ display: 'none' }}>
-          <Testimonial store={store} />
-        </div>
-        <div id="faq" name='FAQ'  className="tabContent" style={{ display: 'none' }}>
-          <FAQ store={store} />
-        </div>
-        <div id="statistic" name='statistic'  className="tabContent" style={{ display: 'none' }}>
-          <Statistic store={store} />
-        </div>
-        <div id="timeLine" name='time line'  className="tabContent" style={{ display: 'none' }}>
-          <Timeline store={store} />
-        </div>
-        <div id="ourTeam" name='our team'  className="tabContent" style={{ display: 'none' }}>
-          <OurTeam store={store} />
-        </div>
-        <div id="gallery" name='gallery'  className="tabContent" style={{ display: 'none' }}>
-          <Gallery store={store} />
-        </div>
-        <div id="form" name='form'  className="tabContent" style={{ display: 'none' }}>
-          <Form store={store} />
-        </div>
-        <div id="pricing" name='pricing'  className="tabContent" style={{ display: 'none' }}>
-          <Pricing store={store} />
-        </div>
-        <div id="content" name='content'  className="tabContent" style={{ display: 'none' }}>
-          <Content store={store} />
-        </div>
-        <div id="hero" name='hero'  className="tabContent" style={{ display: 'none' }}>
-          <Hero store={store} />
-        </div>
-        <div id="card" name='card'  className="tabContent" style={{ display: 'none' }}>
-          <Card store={store} />
-        </div>
-        <div id="trustElement" name='trust Element'  className="tabContent" style={{ display: 'none' }}>
-          <TrustElement store={store} />
-        </div>
-        <div id="partner" name="partner" className="tabContent" style={{ display: 'none' }}>
-          <Partner store={store} />
-        </div>
-        <div id="footer" name="footer" className="tabContent" style={{ display: 'none' }}>
-          <Footer store={store} />
-        </div>
-        <div id="cta" name="cta" className="tabContent" style={{ display: 'none' }}>
-          <CTA store={store} />
-        </div>
+        {componentTemplates()}
         <div id="showAll" className="tabContent" style={{ display: 'block' }}>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }} className='nameTemplate'>Sticky Bar</span>
-              <span onClick={(e) => handleChangeLink(e, 'sticky')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoSticky store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }} className='nameTemplate'>Testimonial</span>
-              <span onClick={(e) => handleChangeLink(e, 'testimonial')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoTestimonial store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }} className='nameTemplate'>Statistic</span>
-              <span onClick={(e) => handleChangeLink(e, 'statistic')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoStatistic store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }} className='nameTemplate'>FAQ</span>
-              <span onClick={(e) => handleChangeLink(e, 'faq')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoFAQ store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Time Line</span>
-              <span onClick={(e) => handleChangeLink(e, 'timeLine')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoTimeLine store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Our Team</span>
-              <span onClick={(e) => handleChangeLink(e, 'ourTeam')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoOurTeam store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Gallery</span>
-              <span onClick={(e) => handleChangeLink(e, 'gallery')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoGallery store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>About Us</span>
-              <span onClick={(e) => handleChangeLink(e, 'about')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoAboutUs store={store} />
-          </div>
-
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Form</span>
-              <span onClick={(e) => handleChangeLink(e, 'form')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoForm store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Pricing</span>
-              <span onClick={(e) => handleChangeLink(e, 'pricing')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoPricing store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Content</span>
-              <span onClick={(e) => handleChangeLink(e, 'content')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoContent store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Hero</span>
-              <span onClick={(e) => handleChangeLink(e, 'hero')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoHero store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Card</span>
-              <span onClick={(e) => handleChangeLink(e, 'card')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoCard store={store} />
-          </div>
-
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Trust Element</span>
-              <span onClick={(e) => handleChangeLink(e, 'trustElement')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoTrustElement store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Partner</span>
-              <span onClick={(e) => handleChangeLink(e, 'partner')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoPartner store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>Footer</span>
-              <span onClick={(e) => handleChangeLink(e, 'footer')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoFooter store={store} />
-          </div>
-          <div>
-            <div className="slick_text">
-              <span style={{ fontSize:'14px' }}>CTA</span>
-              <span onClick={(e) => handleChangeLink(e, 'cta')} className="spanLink" style={{ cursor:'pointer' }}>More...</span>
-            </div>
-            <DemoCTA store={store} />
-          </div>
-
+          {demoTeamplates()}
         </div>
       </div>
-
-
     </div>
   );
 })
@@ -311,7 +235,7 @@ export const DemoTemplate = observer(({ store }) => {
 export const CustomTemplateSection = {
   name: "custom template",
   Tab: (props) => (
-    <SectionTab name="Custom template" {...props}>
+    <SectionTab name="Mẫu" {...props}>
       <MdPhotoLibrary />
     </SectionTab>
   ),

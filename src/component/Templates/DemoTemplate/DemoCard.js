@@ -16,51 +16,54 @@ export default function DemoSticky({ store }) {
             return data.map((data) => {
                 if (data.items) {
                     return data.items.map((item) => {
-                        return (<img className="imgTemp" src={`/card/${item.preview}`} onClick={async () => {
-                            // download selected json
-                            const req = await fetch(`/card/${item.json}`);
-
-                            const json = await req.json();
-                            // just inject it into store
-                            store.loadJSON(json);
-                            console.log(json);
-                        }} />)
+                        return (<div className="imgTemp" >
+                            <div onClick={async () => {
+                                // download selected json
+                                const req = await fetch(`/card/${item.json}`);
+    
+                                const json = await req.json();
+                                // just inject it into store
+                                store.loadJSON(json);
+                                console.log(json);
+                            }} style={{ backgroundImage: `url('/card/${item.preview}')`, backgroundPosition: "center", backgroundSize:"contain",backgroundRepeat:"no-repeat",height:"100px", width: "100%" }}></div>
+                        </div>)
                     })
                 }
             })
         }
     }
-    const handleChangeSlick=()=>{
-        document.getElementById("slick-block").style.display="none";
-        document.getElementById('slick-none').style.display="block";
+    const handleChangeSlick = () => {
+        document.getElementById("slick-block").style.display = "none";
+        document.getElementById('slick-none').style.display = "block";
     }
     const settings = {
         dot: false,
+        infinite: true,
         slideToShow: 2,
         SlideToScroll: 1,
     }
     return (
         <div className="slickAll">
-            <div id="slick-block" style={{display:"block"}}>
+            <div id="slick-block" style={{ display: "block" }}>
                 <Slider {...settings}>
                     {img()}
                 </Slider>
             </div>
-            <div id="slick-none" style={{display:"none"}}>
-            <ImagesGrid
-            shadowEnabled={true}
-            images={data?.map((data) => data.items).flat()}
-            getPreview={(item) => `/card/${item.preview}`}
-            onSelect={async (item) => {
-              // download selected json
-              const req = await fetch(`/card/${item.json}`);
-              const json = await req.json();
-              // just inject it into store
-              store.loadJSON(json);
-              
-            }}
-            rowsNumber={2}
-          />
+            <div id="slick-none" style={{ display: "none" }}>
+                <ImagesGrid
+                    shadowEnabled={true}
+                    images={data?.map((data) => data.items).flat()}
+                    getPreview={(item) => `/card/${item.preview}`}
+                    onSelect={async (item) => {
+                        // download selected json
+                        const req = await fetch(`/card/${item.json}`);
+                        const json = await req.json();
+                        // just inject it into store
+                        store.loadJSON(json);
+
+                    }}
+                    rowsNumber={2}
+                />
             </div>
         </div>
 

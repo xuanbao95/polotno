@@ -8,6 +8,7 @@ import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'polotno/model/store';
 import './polotno.css'
+import './index.scss'
 const  store  = createStore({
   container: document.getElementById('root'),
   key: 'L135rEHrIWVtFugMsn-A', // you can create it here: https://polotno.dev/cabinet/

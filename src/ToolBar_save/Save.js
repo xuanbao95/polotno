@@ -109,6 +109,7 @@ const Save = observer(({ store }) => {
                                 let url= 'data:text/json;base64,' +
                                 window.btoa(unescape(encodeURIComponent(JSON.stringify(json))));
                               downloadFile(url, 'polotno.json');
+                              store.saveAsImage({ fileName: 'polotno.png' });
                              
 
                             }}

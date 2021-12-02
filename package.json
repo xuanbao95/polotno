@@ -20,6 +20,7 @@
     "localforage": "^1.10.0",
     "material-ui-image": "^3.3.2",
     "mobx-react": "^7.2.1",
+    "node-sass": "^6.0.1",
     "polotno": "^0.35.0",
     "polotno-node": "^0.1.18",
     "react": "^17.0.2",

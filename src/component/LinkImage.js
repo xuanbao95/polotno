@@ -90,7 +90,7 @@ export default function LinkImage({ store }) {
     }
 
     return (
-        <div>
+        <div id="main_link">
             <i style={{cursor: "pointer"}} class="fas fa-link" id='modalLink' onClick={() => {
                 document.getElementById("modal").style.display = 'block';
             }}></i>

@@ -1,8 +1,8 @@
-.go2713103140{
+/* .go2713103140{
     background-color: #293039;
     color:white;
-}
-.go1822107527{
+} */
+/* .go1822107527{
     color: #293039;
 }
 .go1798861395 {
@@ -15,8 +15,8 @@
 }
 .bp3-button-text{
     color: #333f48;
-}
-.polotno-panel-container{
+} */
+/* .polotno-panel-container{
     background-color: #333f48;
     color:white;
     overflow: auto;
@@ -52,8 +52,8 @@
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: grey;
     border: 1px solid #000;
-  }
-#modalLink{
+  } */
+/* #modalLink{
     position: relative;
 }
 #modal{
@@ -63,7 +63,7 @@
     border: 1px solid black;
     background: white;
 
-}
+} */
 
 .addInput{
     width: 95%;
@@ -151,23 +151,25 @@
 }
 .tabLink{
     display: inline-block;
-    font-size: 11px;
-    height: 30px;
+    font-size: 14px;
+    height: 50px;
     border-radius: 8px;
-    margin: 10px;
     text-align: center;
-    width: 100%;
+    width: auto;
     display: inline-block;
     background: #0e0d0d00;
     color: #ffffff8c;
     border: 1px solid #00000066;
-    margin-left: 2px;
+  margin: auto;
 }
 .slick-slider{
     width: 239px;
     margin-left: 19px;
 }
-
+.slick-slide{
+    margin-left: 5px;
+    margin-top: 10px;
+}
 .search{
     position: absolute;
     top: 4px;
@@ -204,18 +206,17 @@
 .imgTemp{
     width: 90% !important;
     height: 100%;
+    margin: 0 -27px;
+
 }
 .slickAll{
     margin-bottom: 20px;
 }
 .slickAll .slick-slide{
-    width: 90px !important;
+    width: 100px !important;
 }
 .slick_text{
    display: flex;
    justify-content: space-between;
     margin-bottom: 10px;
 };
-.slick_text .spanLink{
-    margin-left: 135px;
-}
