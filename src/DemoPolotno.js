@@ -34,6 +34,7 @@ import { StickBarSection } from './component/Templates/StickyBar'
 import { StatisticSection } from './component/Templates/Statistic'
 import { ImgLink } from './component/ImgLink';
 import DemoSticky from "./component/Templates/DemoTemplate/DemoSticky";
+import {VideoElementSelection} from './component/VideoComponent/VideoElement'
 function DemoPhoto({ store }) {
   const section = [
     CustomTemplateSection,
@@ -41,8 +42,12 @@ function DemoPhoto({ store }) {
     BackgroundSection,
     UploadSection,
     TextSection,
+    VideoElementSelection,
   ];
-
+//   let elements = store.selectedElements[0];
+//   for (const property in elements) {
+//     console.log(`${property}: ${elements[property]}`);
+// }
   return (
     <div  style={{ maxWidth: "100vw", height: "100vh"}}>
       <Navbar store={store} />

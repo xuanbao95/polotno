@@ -54,22 +54,47 @@
     border: 1px solid #000;
   }
 
-    #modalLink{
+ #modalLink{
         position: relative;
        
-    }
-    #modal{
+ }
+ #modal{
         position: absolute;
         top:81px;
         left: 375px;
         border: 1px solid black;
         background: white;
     
-    }
+}
    
-    .addInput{
+ .addInput{
         width: 95%;
         margin-left: 7px;
         margin-top: 10px;
+ }
+
+ .classEffect{
+    .textEffect{
+        position: relative;
+        margin-left: 10px;
     }
-  
+    .boxEffect{
+        position: absolute;
+        top: 3.5rem;
+        left: 38rem;
+        border: none;
+        background: white;
+        width: 162px;
+        padding-left: 10px;
+        .strokeEffect{
+            display: flex;
+            justify-content: space-between;
+        }
+        .boxEffect_2{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+ }
+
+

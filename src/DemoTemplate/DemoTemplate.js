@@ -207,7 +207,6 @@ export const DemoTemplate = observer(({ store }) => {
     prevArrow: <SamplePrevArrow />
   };
 
-  console.log(componentTemplate);
   return (
     <div style={{ height: '100%', }} >
 
