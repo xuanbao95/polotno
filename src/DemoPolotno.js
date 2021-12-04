@@ -10,6 +10,7 @@ import {
   ElementsSection,
   BackgroundSection,
   TextSection,
+  
 } from "polotno/side-panel";
 import { CustomTemplateSection } from "./DemoTemplate/DemoTemplate";
 import Navbar from "./component/Navbar";
