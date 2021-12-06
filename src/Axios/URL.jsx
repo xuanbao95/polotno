@@ -1,0 +1,1 @@
+export const API_NIKE = "https://9719-125-234-117-20.ngrok.io/api/landingpage/show/2";

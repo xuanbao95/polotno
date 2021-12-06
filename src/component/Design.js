@@ -57,7 +57,7 @@ export default function Design({ store, openModal }) {
     const handleAddNewLink = () => {
         let evalue = document.getElementById('newLink').value;
         localStorage.setItem(elements, JSON.stringify(evalue));
-        localStorage.setItem(elements, JSON.stringify(evalue));
+        elements.set({custom:{url:evalue}})
         setOpen(true)
 
     }

@@ -4,7 +4,6 @@ import { ImagesGrid } from 'polotno/side-panel/images-grid';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import logo from '../../../logo192.png'
 import Image from 'material-ui-image'
 export default function DemoSticky({ store }) {
     const { data } = useInfiniteAPI({
@@ -32,10 +31,7 @@ export default function DemoSticky({ store }) {
             })
         }
     }
-    const handleChangeSlick=()=>{
-        document.getElementById("slick-block").style.display="none";
-        document.getElementById('slick-none').style.display="block";
-    }
+
     const settings = {
         dot: false,
         slideToShow: 3,

@@ -49,6 +49,29 @@ const useStyles = makeStyles({
 });
 
 export default function Navbar({ store }) {
+  const [ladi,setladi]=React.useState()
+  console.log(ladi);
+  const requestOptions = {
+    method: 'POST',
+    headers: { 
+        'Content-Type': 'application/json',
+
+    },
+    body: JSON.stringify({ landingpage: ladi })
+};
+  
+    fetch("https://07b4-125-234-117-20.ngrok.io/api/landingpage/create",requestOptions)
+      .then(res => res.json())
+      .then(
+        (result) => {
+            console.log(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+       
+      )
+ 
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -110,8 +133,10 @@ export default function Navbar({ store }) {
         //xử lý dử liệu url thành JSON
         let url = 'data:text/json;base64,' +
           window.btoa(unescape(encodeURIComponent(JSON.stringify(json))));
-        downloadFile(url, 'polotno.json');
-        store.saveAsImage({ fileName: 'polotno.png' });
+         
+          setladi(url)
+        // downloadFile(url, 'polotno.json');
+        // store.saveAsImage({ fileName: 'polotno.png' });
 
 
       }}>Xuất bản</button>
