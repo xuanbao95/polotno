@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
-import { downloadFile } from 'polotno/utils/download';
+import { Link ,useParams} from 'react-router-dom';
+
 const useStyles = makeStyles({
   root: {
     height: "56px",
@@ -49,30 +50,34 @@ const useStyles = makeStyles({
 });
 
 export default function Navbar({ store }) {
-  const [ladi,setladi]=React.useState()
-  console.log(ladi);
-  const requestOptions = {
-    method: 'POST',
-    headers: { 
-        'Content-Type': 'application/json',
 
-    },
-    body: JSON.stringify({ landingpage: ladi })
-};
-  
-    fetch("https://07b4-125-234-117-20.ngrok.io/api/landingpage/create",requestOptions)
-      .then(res => res.json())
-      .then(
-        (result) => {
-            console.log(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+  const handleSave=()=>{
+    let json = store.toJSON();
+    const requestOptions = {
+      method: 'POST',
+      headers: { 
+          'Content-Type': 'application/json',
+            "Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmQ5MzZkM2Q5OTk4ZWQ0MDZkZGVhY2Y0NThiOTcxODdlMzUwMDc2NDM5M2VhYjRlZWQ5YzJlZGRiNDM4N2RiMjYwY2RiODllOTdjYWI0NjgiLCJpYXQiOjE2Mzg4NTk1NzguOTEyOTI2LCJuYmYiOjE2Mzg4NTk1NzguOTEyOTMyLCJleHAiOjE2NzAzOTU1NzguNzM0OTE3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.s2TW2BsBUGuPkc1LnBTHY1ZYAulL_jOhIcjS611Q_5J7L7zrV3e1ZoOqxY93lL2St51vF7S2Jk28fa_r2FSAvmCkn0zZdOkRMMKkq5K-6f2v3mxqomfiGey_7MJ52K_JsU8tgQmcnR53xXlxvq3hmXUm2Cafh-Ho1glj2Ebh74TxY8FNZ3sHCToxrNAQ6yI1UhB3iB78Lw7NGEOcqL4Qe2sj66QbdDMg3fOzr1qvtAS4Z1LNbWZ3xucMNZ43DG7FyzXIdhvlVOlubxKZdLLMAoZt6DFWQh0CISMcXyJUbYB9JUWAnJF1Gtl_1Brb7RDhxt8qOFzcE5q9Hh8KVjeQZJJjxo2hhEnnLVVaNWtwfJG2hGzv9eixzkuOOU9ggnpKUIwVCW1mNiYcepxCjtbXi9MwDLjFQQAV-1VNk4mvFMTEMyztSITwsTc-9t-vVFgf720aQwOs3INrFceu9s6KfExKRhlGr_K0fodOKUxjbd_nz60fJyO12_Qp07b13yxLNITZ2DYSH5RetTQ3iq5sWWTPvqUVYLOwB7R68oihrSlvnZ6bC4AEJsbfnuL5vBIOWHd8Kahke2QFx56ZYvR5Pb3x33FKguSb_44_A9L0KLKyXoKrY9k_KYcMlC5wEp-7onbfD-Lp3RlRQQzAAVsOmlNxctfeo0UTrdJf9udvBgg "
+      },
+    
+      body: JSON.stringify({ landingpage: json })
+  };
+    
+      fetch("https://dbd8-125-234-117-20.ngrok.io/api/landingpage/builder",requestOptions)
+        .then(res => res.json())
+        .then(
+          (result) => {
+              console.log(result);
+
+          },
+         
+        )
        
-      )
+  }
  
+
   const classes = useStyles();
+  
   return (
     <div className={classes.root}>
       <span>
@@ -80,8 +85,9 @@ export default function Navbar({ store }) {
           <i class="fas fa-chevron-left" style={{ marginLeft: "30px" }}></i>
           <span className={classes.span_back}>Trở về trang chủ</span>
         </a>
-
+          
       </span>
+      <Link to='landing'>landing</Link>
       <span className={classes.span_text}>
         Để lưu Landing Page của bạn, hãy{" "}
         <a href="#" className={classes.span_a}>
@@ -127,19 +133,7 @@ export default function Navbar({ store }) {
         }}
       ></i>
       <button className={classes.button_one}>Xem trước</button>
-      <button className={classes.button_two} onClick={() => {
-        //tạo object lưu trữ json
-        let json = store.toJSON();
-        //xử lý dử liệu url thành JSON
-        let url = 'data:text/json;base64,' +
-          window.btoa(unescape(encodeURIComponent(JSON.stringify(json))));
-         
-          setladi(url)
-        // downloadFile(url, 'polotno.json');
-        // store.saveAsImage({ fileName: 'polotno.png' });
-
-
-      }}>Xuất bản</button>
+      <button className={classes.button_two} onClick={handleSave}>Xuất bản</button>
     </div>
   );
 }

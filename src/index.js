@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
@@ -9,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import { createStore } from 'polotno/model/store';
 import './polotno.css'
 import './index.scss'
-const  store  = createStore({
+const store = createStore({
   container: document.getElementById('root'),
   key: 'L135rEHrIWVtFugMsn-A', // you can create it here: https://polotno.dev/cabinet/
   // you can hide back-link on a paid licence
@@ -18,18 +19,11 @@ const  store  = createStore({
 });
 
 const page = store.addPage();
-store.activePage.addElement({
-  type:'text',
-  text: 'hello',
-  fontSize:60,
-  width:400,
-  height:100,
-});
-store.setSize(414,736,true);
+store.setSize(414, 736, true);
 ReactDOM.render(
-  <React.StrictMode>
-    <App store={store}/>
-  </React.StrictMode>,
+    <BrowserRouter>
+      <App store={store} />
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
