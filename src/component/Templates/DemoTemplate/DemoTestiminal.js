@@ -23,6 +23,7 @@ export default function DemoSticky({ store }) {
                                 const json = await req.json();
                                 // just inject it into store
                                 store.loadJSON(json);
+                                console.log(json);
                             }} style={{backgroundImage:`url('/testimonial/${item.preview}')`,backgroundPosition:"center",backgroundSize:"contain",backgroundRepeat:"no-repeat",height:"100px",width:"100%sss"}}></div>
                     </div>)
                     })

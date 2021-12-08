@@ -43,6 +43,10 @@ function DemoPhoto({ store }) {
     TextSection,
     VideoElementSelection,
   ];
+  // let elements = store.selectedElements[0];
+  // for (const property in elements) {
+  //   console.log(`${property}: ${elements[property]}`);
+  // }
   return (
     <div  style={{ maxWidth: "100vw", height: "100vh"}}>
       <Navbar store={store} />

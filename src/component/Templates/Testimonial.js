@@ -10,6 +10,10 @@ export const Testimonial=observer(({store})=>{
     const{data,isLoading}=useInfiniteAPI({
         getAPI:()=>`testimonial/page.json`,
     });
+  //     let elements = store.selectedElements[0];
+  // for (const property in elements) {
+  //   console.log(`${property}: ${elements[property]}`);
+  // }
     return (
         <div style={{ height: '100%' }}>
           <ImagesGrid
