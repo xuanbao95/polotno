@@ -43,7 +43,7 @@ function DemoPhoto({ store }) {
     TextSection,
     VideoElementSelection,
   ];
-  // let elements = store.selectedElements[0];
+  // let elements = store.selectedElements[2];
   // for (const property in elements) {
   //   console.log(`${property}: ${elements[property]}`);
   // }

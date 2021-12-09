@@ -10,7 +10,7 @@ function App({ store, element }) {
     <div>
       <Routes >
         <Route path="/" exact element={<Demo store={store}/>}   />
-        <Route path="landing" element={<Landing store={store}/>} />
+        <Route path="landing/:id" element={<Landing store={store}/>} />
       </Routes >
 
 

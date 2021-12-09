@@ -9,21 +9,30 @@ export default function DemoSticky({ store }) {
     const { data } = useInfiniteAPI({
         getAPI: () => `statistic/page.json`,
     })
+     let elements = store.selectedElements[0];
+  for (const property in elements) {
+    console.log(`${property}: ${elements[property]}`);
+  }
     const [dataImg,setDataImg]=React.useState(localStorage.getItem('example'))
+    const handleClick=()=>{
+        if(dataImg){
+            
+        }
+    }
     const img = () => {
         if (data) {
             return data.map((data) => {
                 if (data.items) {
                     return data.items.map((item) => {
                         return (<div className="imgTemp" >
-                        <div  onClick={() => {
-                                if (dataImg) {
-                                    let a = dataImg;
-                                    if (a) {
-                                        store.loadJSON(JSON.parse(a))
-                                    }
-
-                                }
+                        <div  onClick={async () => {
+                                // download selected json
+                                const req = await fetch(`/statistic/${item.json}`);
+    
+                                const json = await req.json();
+                                // just inject it into store
+                                store.loadJSON(json);
+                                console.log(json);
                             }} style={{backgroundImage:`url('/statistic/${item.preview}')`,backgroundPosition:"center",backgroundSize:"contain",backgroundRepeat:"no-repeat",height:"100px",width:"100%"}}></div>
                     </div>)
                     })

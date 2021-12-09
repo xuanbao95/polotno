@@ -4,10 +4,13 @@ import { ImagesGrid } from 'polotno/side-panel/images-grid';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import axios from 'axios';
 export default function DemoSticky({ store }) {
     const { data } = useInfiniteAPI({
         getAPI: () => `stickyBar/page.json`,
     })
+
+    const [isLoaded, setIsLoaded] = React.useState(false);
     const [lala, setLala] = React.useState();
     console.log(lala);
     React.useEffect(() => {
@@ -19,31 +22,20 @@ export default function DemoSticky({ store }) {
             },
 
         };
-        const getData = async () => {
-            try {
-                const req = await fetch(`data.json`)
-                const data = await req.json()
-                setLala(data)
-            } catch (er) {
+        const getData=async()=>{
+            try{
+                const result = await axios(
+                    'http://d9f3-125-234-117-20.ngrok.io/api/landingpage/builder/18',
+                  );
+                  setLala(result.data.data);
+            }catch(er){
                 console.log(er);
             }
-
         }
         getData()
+     
     }, [])
 
-    //   const imgData=()=>{
-    //       if(lala){
-    //           let a=lala.content;
-    //           if(a){
-    //               console.log(JSON.parse(a));
-    //           }
-    //         return <div onClick={()=>{
-    //           store.loadJSON(JSON.parse(a))
-    //         }}>{img()}</div>
-    //       }
-
-    //   }
 
     const img = () => {
         if (data) {
@@ -54,10 +46,8 @@ export default function DemoSticky({ store }) {
                             <div onClick={() => {
                                 if (lala) {
                                     let a = lala.content;
-                                    if (a) {
-                                        store.loadJSON(JSON.parse(a))
-                                    }
-
+                                    console.log(a);
+                                    store.loadJSON(JSON.parse(a))
                                 }
                             }} className="imgTemp" key={index}>
                                 <div style={{ backgroundImage: `url('/stickyBar/${item.preview}')`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat", height: "100px", width: "100%" }}>

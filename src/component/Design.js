@@ -1,8 +1,9 @@
 import { display } from '@mui/system';
 import React from 'react';
+import DropShip from './Link/DropShip/DropShip';
 
 
-export default function Design({ store, openModal }) {
+export default function Design({ store }) {
     let elements = store.selectedElements[0];
     const [oldLink, setOldLink] = React.useState([
         { url: 'https://github.com/' },
@@ -94,7 +95,7 @@ export default function Design({ store, openModal }) {
             <i style={{cursor: "pointer",color:"#585e62"}} class="fas fa-link" id='modalLink' onClick={() => {
                 document.getElementById("modal").style.display = 'block';
             }}></i>
-            <div id='modal' style={{ display: 'none',width:"300px",height:"165px"}}>
+            <div id='modal' style={{ display: 'none',width:"1000px",height:"300px"}}>
                 <div className="div_button">
                     <button className="tabButton tabOne" onClick={handleTabOne}>Nhập một Link</button>
                     <button className="tabButton tabTwo" onClick={handleTabTwo}>Chọn một link</button>
@@ -103,7 +104,8 @@ export default function Design({ store, openModal }) {
                 }}></i>
                 </div>
                 <div id='tab-1' style={{ display: 'block' }}>
-                    {AddNewLink()}
+                  
+                    <DropShip store={store}/>
                 </div>
                 <div id='tab-2' style={{ display: 'none' }}>
                     {linkStore()}
