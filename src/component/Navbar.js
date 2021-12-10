@@ -1,7 +1,10 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import { Link, useParams } from 'react-router-dom';
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Box } from "@mui/system";
 const useStyles = makeStyles({
   root: {
     height: "56px",
@@ -52,18 +55,57 @@ const useStyles = makeStyles({
 export default function Navbar({ store }) {
   const [img,setImg]=React.useState();
 
+  const [open,setOpen]=useState(false)
+  const navigate=useNavigate()
   const handleClick = async () => {
-    let json = store.toJSON();
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ landingpage: json })
-  };
-  fetch('http://d9f3-125-234-117-20.ngrok.io/api/landingpage/builder', requestOptions)
-      .then(response => response.json())
-      .then(result => setImg(data.data));
+    let json=store.toJSON()
+     
+         axios.post('https://1e93-125-234-117-20.ngrok.io/api/landingpage/builder',{landingpage:json})
+          .then(function (response) {
+            navigate(`/landing/${response.data.data.id}`)
+            setImg(response.data.data.id)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          
+    }
+    const handleOpen=()=>{
+      if(open===false){
+        setOpen(true)
+        document.getElementById("modalPop").style.display = 'block'
+      }else{
+        setOpen(false);
+        document.getElementById("modalPop").style.display="none"
+      }
+    }
+    const showPopUp=()=>{
+      return(
+        <div id="modalPop" style={{display:'none'}}>
+          <div className="setlink" style={{background:'white'}}>
+              <h3>Thiết lập link</h3>
+              <div className="buttonTab">
+                  <button>Xuất bản</button>
+                  <button>Mã chuyển đổi</button>
+              </div>
+              <div className="exportLink">
+                  <h1>Chúc mừng bạn đã xuất bản thành công!</h1>
+                  <Box>
+                      <p>Tên trang</p>
+                      <input type='text' />
+                  </Box>
+                  <Box>
+                      <p>Link trang Landing Page của bạn, đã được tự động rút gọn link</p>
+                      <input type='text' />
+                  </Box>
+                  <button>Xuất bản lại</button>
+              </div>
+          </div>
+      </div>
+      )
+    }
       
-  }
+  
 
   const classes = useStyles();
 
@@ -121,8 +163,11 @@ export default function Navbar({ store }) {
           fontSize: "12px"
         }}
       ></i>
-      <button className={classes.button_one}> <Link to='landing' style={{ color: "white" }}>Xem trước</Link></button>
-      <button className={classes.button_two} onClick={handleClick} >Xuất bản</button>
+      <button className={classes.button_one} onClick={()=>{
+          navigate(`/landing/${img}`)
+      }}> Xem trước</button>
+      <button id="buttonExport" className={classes.button_two} onClick={handleClick} >Xuất bản</button>
+      
     </div>
   );
 }

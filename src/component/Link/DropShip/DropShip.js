@@ -7,14 +7,14 @@ export default function DropShip({ store }) {
     const [open, setOpen] = useState(false);
     const local = localStorage.getItem(elements);
     const navigate = useNavigate();
-    for (const property in elements) {
-        console.log(`${property}: ${elements[property]}`);
-    }
+    // for (const property in elements) {
+    //     console.log(`${property}: ${elements[property]}`);
+    // }
     const [listProduct, setListProduct] = React.useState();
     console.log(listProduct);
     React.useEffect(() => {
         const callAPI = async () => {
-            const res = await fetch('http://d9f3-125-234-117-20.ngrok.io/api/dropshipping/pr', {
+            const res = await fetch('http://cb90-125-234-117-20.ngrok.io/api/dropshipping/pr', {
                 method: 'GET', headers: {
                     'Accept': 'application/json'
                 }

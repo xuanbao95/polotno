@@ -1,52 +1,65 @@
 import React from "react";
 import { Link, useParams } from 'react-router-dom';
 import { PolotnoContainer, SidePanelWrap, WorkspaceWrap } from "polotno";
+import { Toolbar } from "polotno/toolbar/toolbar";
 import Workspace from "polotno/canvas/workspace";
-export default function LandingPage({store,id}) {
-    const [dataImg, setDataImg] = React.useState()
-   console.log(dataImg);
-    React.useEffect(() => {
-        const getData = async () => {
-           const req= await fetch(`http://d9f3-125-234-117-20.ngrok.io/api/dropshipping/pr/${id.id}`,{method:'GET',headers:{
-            'Accept':'application/json'
-        }})
-        .then(res=>res.json()).then(result=>setDataImg(result.data))
-        }
-        getData()
-    }, [])
+import ZoomButton from "../ZoomButton";
+import SidePanel from "polotno/side-panel/side-panel";
+import {
+  UploadSection,
+  ElementsSection,
+  BackgroundSection,
+  TextSection,
   
-    const imgData = () => {
-        if (dataImg) {
-            let a = dataImg;
-           
-           
-        }
+} from "polotno/side-panel";
+import axios from "axios";
+import { useState } from "react";
+import DemoPhoto from "../DemoPolotno";
+export default function LandingPage({store,id}) {
+   const [product,setProduct]=useState();
+   const [valid,setValid]=useState(false)
+
+   
+   const section = [
+
+    ElementsSection,
+    BackgroundSection,
+    UploadSection,
+    TextSection,
+
+  ];
+
+  React.useEffect(()=>{
+    const callAPI=async()=>{
+            try{
+                const res = await axios(`/data.json`,{method:"GET"});
+                setProduct(res.data.content)
+                
+          }catch(er){
+              console.log(er);
+          }
+        };
+        callAPI()
+        setTimeout(()=>document.getElementById("button").click(),2000)
+    document.getElementById("button").click()
+  },[])
+const checkClick=()=>{
+    
+    if(product){
+        store.loadJSON(JSON.parse(product))
     }
-    const show=()=>{
-        if(dataImg){
-               return(
-                   <div style={{marginLeft:'10px'}} onClick={()=>{
-                    // document.getElementById('link').value=item.name;
-                    
-                   }}>
-                       <div>
-                       <img src="https://picsum.photos/100/50" atl="123"/>
-                       </div>
-                       <span dangerouslySetInnerHTML={{__html: dataImg.name}} style={{fontSize:'10px',textAlign:'center',width:'50px',height:"50px"}} />
-                   </div>
-               ) 
-            
-        }
-    }
+}
     return (
         <div>
             <Link to="/">Polotno</Link>
-            {/* <WorkspaceWrap style={{ maxWidth: "100vw", height: "92.9vh" }}>
-            <Workspace store={store} pageControlsEnabled={false} />
-          </WorkspaceWrap> */}
-       {show()}
+            <button id="button" onClick={checkClick} style={{display:'none'}}>click</button>  
+            <div style={{ maxWidth: "100wh", height: "100vh"}} >
 
-
+            <Workspace store={store}/>
+            </div>
+           {/* <DemoPhoto store={store}/> */}
+           
+            
         </div>
     )
 }

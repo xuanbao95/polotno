@@ -96,5 +96,22 @@
         }
     }
  }
+ #buttonExport{
+     position: relative;
+ }
+ #modalPop{
+     position: absolute;
+     top: 0;
+     left: 0;
+     z-index: 100;
+    background: #00000059;
+     .setlink{
+         width: 50%;
+         height: 300px;
+         z-index: 999;
+         margin-left: 36%;
+    margin-top: 104px;
+     }
+ }
 
 

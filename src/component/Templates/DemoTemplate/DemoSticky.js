@@ -12,20 +12,19 @@ export default function DemoSticky({ store }) {
 
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [lala, setLala] = React.useState();
-    console.log(lala);
     React.useEffect(() => {
         const requestOptions = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                // "Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2MwNjFjMDc0MWE1ZWNiYmQ3NjYwNTdjODRjZWNjNzBlM2I4YTU1MmRiZDMzMmVjZTFjMWI2ZjBiNGM3MTA0Y2FhYmVjYzU3NzA2YzA4ZDAiLCJpYXQiOjE2Mzg5NDUyNzMuNzE5MTQ3LCJuYmYiOjE2Mzg5NDUyNzMuNzE5MTUxLCJleHAiOjE2NzA0ODEyNzMuNzE1OTQ5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.leVSKK3uMtL-pHsDMvoicE2tC6UcSYG9Tk7iECcPPr4ZH9UNscTR5xvYEA2P4PsCr4IwuXOsUgVZSuXbj1FUpz-rxhfqCgqGcyEgroH9NGu2wncc_IJ5qZZ91_9QwuU7jN8UtkXqoY5l8GJdTnYHRTyjjH1Yf-KTgJPWSChtkumBt2HH89IIPPIqxHEIIiVGVEk0BM63nZv0JMjihKZKUAUP4Gur-G7ouVT0aGuZPX5gEZRWOigldIjSjYYfQKNaRTEPLi-s_8Gr6pQYCNSyCfsiUPWjTBJqsLXnbKNLJMUM0bIUUnXhKy0E7tSqyKEpo6uZfzvS8szMHWBqSB2l88tCkNW0ajXqraTzineIEdYPi_wtGoEDSYw84j8Zgjyp2wtsyMgbH8MGHTUpWAdjvhLhbEeCcAtvCkU9hOiwoLTihoRxvirddcIFrouB5Pk3h6YpC8n-d-McsfMjCr8Xm-lxDD41yoPQI6e9PF1U3qjjgOTbkGUtMfPBsKMOfmwWkZL3Blgls55EtiToP5JsDpUDcvfnGTIPIELB5XjhkSiDEpoF--kUNzVlAW120009mAf81TurM0rzHC4ZB07UK3p7rebBylP0yx0rCVOoj7iBTUu9-jjDv9c40OK687h69a9qg0M7Uq8Fq7P0qHZkoq98eyCMEeg6KRrf4_2w3IU"
+                "Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTA0NjJmYzQ4YTk4NGMyMGJhNmNjY2YzMTljZDY5MzYxMDY1MmY5MTIxY2JlMDVjMDRjYjk2NTAzYjRiYmZkOTYyNzMyMjE0ZGNhMDM3ZTMiLCJpYXQiOjE2Mzg3ODQyNjMuMjEzOTM0LCJuYmYiOjE2Mzg3ODQyNjMuMjEzOTQxLCJleHAiOjE2NzAzMjAyNjMuMDU3MDcsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.LawreHVchcLlNdDY98HNpDdiOR5Su6DcrLr70f0uZE7coYTUAhrleRpJ9WP1hhgByh2HP0ulcnBlxRC9GWiDmUrHpjp456VyRO8v7dPk_MfM270hVlaaryH3MI7pCfnoqAU7ylSxx2h3LpqQNJkjlf-TGVfVF8D61GPZqdZ3jR5wxRzfG0saHZPnf1T9WCJgdH4j3Jy4gYj_PsmzfRoxYVl1y__J9UuS-ZxVJRVNvMy42kOptu7uDNf3uchi924OID4ZinuVbgpsClC9J1lz2W6dPCkWxmt1ZQS0Y_BCAoag-4nwC_R9KoB4yJkWkjwA6V1lTwoHo5VWDKab6MaTUdgoGmKpRoFQiPl_K6F0ZRLn0AXseaD-aQ5__LSq54pOIjCUrhND1vbE0bWpHYnoAxqZQKvxTq3sbfgieiahnPXX1LWOqeSw62Cb1nTL6vmKJz97yqpogf-dtVYXZf8SGj7r-r3QhnxNHQXo0p_mflDteK6FMm8vg2ACyfR5Kt0_RzmGFtVI9yaj52lESe8WuA5O5Z-8PyMppN0QkU01UQOWdBrOOxQwUiiWyrwxbqxbTlgDxYrvzU22ARq-UGSggI91f0AHA1-DFo1WGzNR4tfQShH3472odBwtkpPloW75QtJFYkGN7sU90vSjhLhb5LehPlktQLO8cXPVeove6UU"
             },
 
         };
         const getData=async()=>{
             try{
                 const result = await axios(
-                    'http://d9f3-125-234-117-20.ngrok.io/api/landingpage/builder/18',
+                    'https://1e93-125-234-117-20.ngrok.io/api/landingpage/builder/18',
                   );
                   setLala(result.data.data);
             }catch(er){
@@ -35,7 +34,12 @@ export default function DemoSticky({ store }) {
         getData()
      
     }, [])
-
+    const handleClick=()=>{
+        if(lala){
+            console.log(lala);
+            store.loadJSON(JSON.parse(lala.content))
+        }
+    }
 
     const img = () => {
         if (data) {
@@ -43,13 +47,7 @@ export default function DemoSticky({ store }) {
                 if (data.items) {
                     return data.items.map((item, index) => {
                         return (
-                            <div onClick={() => {
-                                if (lala) {
-                                    let a = lala.content;
-                                    console.log(a);
-                                    store.loadJSON(JSON.parse(a))
-                                }
-                            }} className="imgTemp" key={index}>
+                            <div onClick={handleClick} className="imgTemp" key={index}>
                                 <div style={{ backgroundImage: `url('/stickyBar/${item.preview}')`, backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat", height: "100px", width: "100%" }}>
                                 </div>
                             </div>
