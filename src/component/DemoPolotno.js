@@ -10,30 +10,16 @@ import {
   TextSection,
   
 } from "polotno/side-panel";
-import { CustomTemplateSection } from "../DemoTemplate/DemoTemplate";
-import Navbar from "./Navbar";
-import ZoomButton from "./ZoomButton";
-import { DemoSection } from './Templates/Demo'
-import { TestimonialSection } from './Templates/Testimonial'
-import { FAQSection } from './Templates/FAQ';
-import { TimelineSection } from './Templates/TimeLine';
-import { OurTeamSection } from './Templates/OurTeam';
-import { GallerySection } from './Templates/Gallery';
-import { FormSection } from './Templates/Form';
-import { PricingSection } from './Templates/Pricing';
-import { HeroSection } from './Templates/Hero';
-import { CardSection } from './Templates/Card';
-import { TrustElementSection } from './Templates/TrustElement';
-import { PartnerSection } from './Templates/Partner';
-import { FooterSection } from './Templates/Footer';
-import { CTASection } from './Templates/CTA';
-import TextToolbars from './AddLink'
-import { AboutUs } from './Templates/AboutUs'
-import { StickBarSection } from './Templates/StickyBar'
-import { StatisticSection } from './Templates/Statistic'
-import { ImgLink } from './ImgLink';
-import DemoSticky from "./Templates/DemoTemplate/DemoSticky";
-import {VideoElementSelection} from './VideoComponent/VideoElement'
+import { CustomTemplateSection } from "./DemoTemplate/DemoTemplate";
+import Navbar from "./NavBar/Navbar";
+import ZoomButton from "./Toolbar/componentTool/ZoomButton";
+import { DemoSection } from './DemoTemplate/Templates/Demo'
+import { TestimonialSection } from './DemoTemplate/Templates/Testimonial'
+import TextToolbars from './Toolbar/AddLink';
+import { StickBarSection } from './DemoTemplate/Templates/StickyBar'
+import { StatisticSection } from './DemoTemplate/Templates/Statistic'
+import { ImgLink } from './Toolbar/componentTool/ImgLink';
+import DemoSticky from "./DemoTemplate/Templates/DemoTemplate/DemoSticky";
 function DemoPhoto({ store }) {
   const section = [
     CustomTemplateSection,
@@ -41,7 +27,6 @@ function DemoPhoto({ store }) {
     BackgroundSection,
     UploadSection,
     TextSection,
-    VideoElementSelection,
   ];
   // let elements = store.selectedElements[2];
   // for (const property in elements) {
